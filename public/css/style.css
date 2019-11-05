@@ -175,18 +175,15 @@
     border-radius: 20px
 }
 
-.card-header{
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-.card-header img{
+
+/* .card-header img{
     max-width:100% ;
     height: inherit;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top:1rem; */
-}
+    margin-top:1rem;
+} */
 
 .card-category{
     font-size: 1.5rem;
@@ -446,6 +443,10 @@ body{background: #f2f2f2}
     }
     .navbar-open{
         display: block!important
+    }
+    .navbar-open i{ 
+        display: flex;
+        align-items: center;
     }
 }
 .input-primary,.input-primary:focus,.input-primary:active{
