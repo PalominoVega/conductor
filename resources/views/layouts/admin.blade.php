@@ -53,25 +53,16 @@
             <div class="sidebar-body">
                 <ul>
                     <li class="active">
-                        <a href=""><i class="fa fa-user" aria-hidden="true"></i>Home</a>
+                        <a href=""><i class="fa fa-user" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
                     <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
+                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
+                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Asignación</a>
                     </li> 
                     <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
-                    </li> 
-                    <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
-                    </li> 
-                    <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
-                    </li> 
-                    <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
+                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
                     <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>

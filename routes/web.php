@@ -19,7 +19,7 @@ Auth::routes();
 
 /* login */
 Route::get('/', function () {
-    return view('home');
+    return view('show');
 });
 // Route::post('login', 'LoginController@postLogin')->name('postlogin');
 Route::get('login/check', 'LoginController@check')->name('check');
