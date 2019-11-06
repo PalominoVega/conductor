@@ -30,7 +30,8 @@ class VehiculoController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehiculo.create');
+        
     }
 
     /**

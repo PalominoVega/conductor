@@ -10,6 +10,7 @@ use App\Http\Requests\ConductorValidation;
 use Peru\Http\ContextClient;
 use Peru\Jne\{Dni, DniParser};
 use Peru\Sunat\{HtmlParser, Ruc, RucParser};
+use Alert;
 
 class ConductorController extends Controller
 {
@@ -20,7 +21,7 @@ class ConductorController extends Controller
      */
     public function index()
     {
-        $conductores=Conductor::where('empresa_id',auth()->user()->empresa_id)->where('estado','0')->get();
+        $conductores=Conductor::select('id', 'nombre', 'apellido','celular','estado')->where('empresa_id',auth()->user()->empresa_id)->where('estado','0')->get();
         // return response()->json($conductores);
         return view('conductor.index', compact('conductores'));
     }
@@ -32,6 +33,7 @@ class ConductorController extends Controller
      */
     public function create()
     {
+        return view('conductor.create');
         
     }
 
@@ -41,8 +43,10 @@ class ConductorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(ConductorValidation $request)
+    {   
+        // dd($request->all());
+
         DB::beginTransaction();
         try {
             /**
@@ -65,6 +69,7 @@ class ConductorController extends Controller
                     ->save(public_path('/storage/afiliado/'.$fileName));
                 $conductor->foto=$fileName;
             }
+            // dd($foto=$request->file('file'));
             /**
              * Documentacion y fecha de vigencia de los mismos
              */
@@ -92,7 +97,7 @@ class ConductorController extends Controller
      */
     public function show($conductor_id)
     {
-        $conductor=Conductor::where('id',$conductor_id)->get();
+        $conductor=Conductor::where('id',$conductor_id)->first();
         return view('conductor.show', compact('conductor'));
     }
 
@@ -148,7 +153,8 @@ class ConductorController extends Controller
             $conductor->save();
             DB::commit();
             alert()->success($conductor->nombre,'Datos actualizados correctamente');
-            return redirect()->route('conductor.index');
+            // return redirect()->route('conductor.index');
+            return redirect()->route('conductor.show',$conductor_id);
         }catch(\Exception $e){
 
             DB::rollback();
@@ -198,6 +204,45 @@ class ConductorController extends Controller
         }
     }
 
+    public function updateFoto(Request $request,$conductor_id )
+    {
+        DB::beginTransaction();
+
+        try {
+            /**
+             * Datos del Cliente
+             */
+            $conductor=Conductor::where('id',$conductor_id)->first();
+
+            if($request->file('file')!=null){
+                $foto=$request->file('file');
+                $fileName = 'item-'.$conductor->dni.'.'.$foto->getClientOriginalExtension();
+                \Image::make($foto)
+                    ->resize(600, null, function ($constraint) {$constraint->aspectRatio();})
+                    ->save(public_path('/storage/afiliado/'.$fileName));
+                $conductor->foto=$fileName;
+            }
+            
+
+            $conductor->save();
+            DB::commit();
+            alert()->success($conductor->nombre,'Foto actualizado');
+            return redirect()->route('conductor.show',$conductor_id);
+        }catch(\Exception $e){
+
+            DB::rollback();
+            $error = $e->getMessage();
+            alert()->warning('No se ha podido actualizar la foto de  <br>'.$error, $conductor->nombre )->persistent('Ok')->html();
+            return redirect()->back();
+        };
+    }
+
+    public function deshabilitados()
+    {
+        $conductores=Conductor::select('id', 'nombre', 'apellido','celular','estado')->where('empresa_id',auth()->user()->empresa_id)->where('estado','1')->get();
+        // return response()->json($conductores);
+        return view('conductor.deshabilitados', compact('conductores'));
+    }
 
     public function buscar(Request $request){
         if (strlen($request->get('documento'))==8) {

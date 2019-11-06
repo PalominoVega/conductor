@@ -4,58 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Support\Facades\Validator;
-use App\Model\User;
+use App\User;
 use Illuminate\Support\Facades\Hash;
+
+use App\Http\Requests\LoginValidation;
+
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
     public function postLogin(Request $request)
     {
-        
-        $validator = Validator::make($request->all(), [
-            'email' => 'required',
+        $credentials=$this->validate($request, [
+            'email' => 'required', 
             'password' => 'required',
         ]);
-        if ($validator->fails()) {
-            return response()
-                ->json([
-                    "status"=>'VALIDATION',
-                    "data"=>$validator->messages()
-                ]);
-        }
-        
-        $usuario=User::where('email',$request->email)->first();
-        if(is_null($usuario))
-            return response()->json([
-                "status"    =>  "WARNING",
-                "data"=>"Email no encontrado",
-            ]);
-        
-        if(Hash::check($request->password, $usuario->password)){
-
-            if (($usuario->estado=='0' || $usuario->estado=='2') && $usuario->empresa->tipo=='Activo'){
-                return redirect()->route('home');
-            }elseif ($usuario->empresa->tipo=='Inactivo') {
-                return response()->json([
-                    "status"    =>  "WARNING",
-                    "data"=>"Removar contrato",
-                ]);
+       
+        if(Auth::attempt($credentials)){
+            if (Auth::user()->estado!='1' && Auth::user()->empresa->estado=='0') {
+                // dd('hola');
+                return redirect()->route('conductor.index');
             }
-            return response()->json([
-                "status"    =>  "WARNING",
-                "data"=>"Su cuenta está deshabilitada",
-            ]);
-        };
-                
+            
+            if (Auth::user()->empresa->estado=='1') {
+                Auth::logout(); Session::flush();
+                return back()
+                ->withInput(request(['email']))
+                ->withErrors(['email'=>trans('Removar contrato')]); 
+            }
+            Auth::logout(); Session::flush();
+            return back()
+            ->withInput(request(['email']))
+            ->withErrors(['email'=>trans('Su cuenta está deshabilitada')]); 
+        }
+
+        return back()
+                ->withInput(request(['email']))
+                ->withErrors(['email'=>trans('auth.failed')]);
     }
 
     public function cerrar_session(Request $request){
-        session()->forget('user');
-        return redirect('/home');   
+        Auth::logout(); Session::flush();
+        return json_encode('salir');   
     }
 
     public function redirectPath()

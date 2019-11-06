@@ -36,7 +36,7 @@ class ConductorValidation extends FormRequest
             ],
             'nombre'    => 'required|max:50',
             'apellido'    => 'required|max:50',
-            'celular'   => [new Celular(),'max:22'],
+            'celular'   => [new CelularRule(),'max:22'],
             'direccion' => 'max:100|nullable',
             'licencia'=>'max:10|nullable',
             'fecha_licencia'=>'date|nullable',

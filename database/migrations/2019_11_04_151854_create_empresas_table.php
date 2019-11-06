@@ -22,18 +22,17 @@ class CreateEmpresasTable extends Migration
             $table->string('telefono','15')->nullable();
             $table->string('email','100')->nullable();
             $table->string('logo','15')->nullable();
-            $table->enum('tipo',['0','1'])->default('0');
+            $table->enum('estado',['0','1'])->default('0');
         });
 
         DB::table('empresa')->insert([
             'nombre'=>'Ves Pro',
             'direccion'=>'av. Agusto D. Legia 420',
             'telefono'=>997627162,
+            'ruc'=>997627162,
             'logo'=>'itemtlU.gif',
             'email'=>'vespro@corporacionvespro.com',
-            'tipo'=>'0',
-            'codSeguridad'=>'hola',
-            'paquete'=>"Estandar",
+            'estado'=>'0',
         ]);
     }
 

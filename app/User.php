@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table="user";
+    public $timestamps = false;
+
+    public function empresa()
+    {
+        return $this->belongsTo('App\Model\Empresa');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

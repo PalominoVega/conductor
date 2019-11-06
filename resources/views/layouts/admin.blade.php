@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <title>Flota  </title>
 
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Black.ttf" />
+  {{-- <link rel="stylesheet" href="css/font-montserrat/Montserrat-Black.ttf" />
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-BlackItalic.ttf" />
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-Bold.ttf" />
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-BoldItalic.ttf" />
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBold.ttf" />
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBoldItalic.ttf" />
   <link rel="stylesheet" href="css/font-montserrat/Montserrat-Thin.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ThinItalic.ttf" />
+  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ThinItalic.ttf" /> --}}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{-- Booststrap  --}}
@@ -53,20 +53,20 @@
             <div class="sidebar-body">
                 <ul>
                     <li class="active">
-                        <a href=""><i class="fa fa-user" aria-hidden="true"></i>Lista de Conductores</a>
+                        <a href="{{ route('conductor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
                     <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Lista de Vehículos</a>
+                        <a href="{{ route('vehiculo.index') }}"><i class="fa fa-car" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Asignación</a>
                     </li> 
-                    <li>
+                    {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
                     <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
-                    </li> 
+                    </li>  --}}
                 </ul>
             </div>
         </div>
@@ -76,11 +76,11 @@
                 <div class="navbar-content">
                     {{-- <i class="fa fa-bell" aria-hidden="true"></i> DIEGO FRANCISCO MENDOZA FRIAS <i class="fa fa-user" aria-hidden="true"></i> --}}
                     <ul>
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <a href="http://example.com" >
                                 <i class="fa fa-user"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="dropdown">
                             <a  href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 palomino vega 
@@ -88,7 +88,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                 <a class="dropdown-item" onclick="salir()">Cerrar Sesión</a>
-                                <a class="dropdown-item" >Cambiar contraseña</a>
+                                {{-- <a class="dropdown-item" >Cambiar contraseña</a> --}}
                             </div>
                         </li>
                     </ul>
@@ -126,8 +126,9 @@
   @include('sweet::alert')
   
   <script>
-   
-    
+   //DATOS GENERALES
+    var nombre_empresa="{{ Auth::user()->empresa->nombre  }}";
+    var csrf_token="{{csrf_token()}}";
 
     var URLactual = window.location.href.replace("http://","").replace("https://","");
     $(document).ready(function(){
@@ -146,7 +147,6 @@
   </script>
   <script>
     function cerrar(){
-      console.log('hola');
       $('.sidebar.open').removeClass('open');
       $('.show-sidebar.open').removeClass('open');
     };
@@ -154,9 +154,29 @@
       
       $('.sidebar').addClass('open');
       $('.show-sidebar').addClass('open');
-
     }
 
+    function salir() {
+      $.ajax({
+          url: "{{route('cerrar')}}",
+          type: 'GET',
+          data: {
+          },
+          success: function(data){
+              var url =  "{{route('login')}}"; 
+              $(location).attr('href',url);
+          }
+      });
+    }
+
+    setTimeout(() => {
+      
+      $.get("{{route('check')}}", {_csrf:csrf_token},function( data ) {
+        if(data.status==false){
+          window.location.href="{{route('login')}}";
+        }
+      });  
+    }, 1000);
 
   </script>
 </body>

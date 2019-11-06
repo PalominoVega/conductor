@@ -1,5 +1,5 @@
 .container{
-    /* min-height: calc(100vh - 144px); */
+    min-height: calc(100vh - 144px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
 }
 
 .title{
-    color: #212529;
+    color: #a7261b;
     background-color: white;
     padding: 10px 20px;
     border-radius: 10px;
@@ -25,7 +25,7 @@
     font-weight: 500;
     line-height: 1;
     display: inline-block;
-    border: 2px solid black;
+    border: 2px solid #a7261b;
 }
 
 .login{
@@ -33,10 +33,10 @@
 }
 
 hr{
-    background-color: black;
+    background-color: #a7261b;
     margin-bottom: -22px;
     max-width: 500px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #a7261b;
 }
 
 body{
@@ -46,11 +46,12 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    color: #a7261b;
 }
 
 p{
     display: inline-block;
-    padding: 30px 10px;
+    padding: 30px 10px 0px;
 }
 
 .row{
@@ -65,3 +66,92 @@ footer{
 .cuerpo{
     min-height: calc(100vh - 44px);
 }
+
+.btn-primary,.btn-primary:hover,.btn-primary:focus,.btn-primary:active{
+	background-color: #b21f16 !important;
+    border-color: #b21f16 !important;
+}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{
+    box-shadow: 0 0 2px 0.2rem rgba(167, 38, 27, 0.84)!important;
+}
+.btn{color: #fff;border-radius: 10px}
+
+a, a:hover{
+    color: #b21f16;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+.form-group {
+    position: relative;
+}
+.form-group input{
+    padding-left: 25px;
+}
+.form-group i {
+    position: absolute;
+    top: 11px;
+    left: 6px;
+}
+.form-control:focus {
+    color: #495057;
+    /* background-color: var(--blue-color) !important; */
+    border-color: #b21f16 !important;
+    outline: 0;
+    box-shadow: 0 0 2px 0.2rem rgba(167, 38, 27, 0.84)!important;
+}
+
+/* .form-group::before{
+    font-family: 'Font Awesome 5 Free';
+    content: "\f007";
+    position: absolute;
+    font-size: 16px;
+    left:28px;
+    padding-top: 9px;
+    padding-left: 8px;
+    color:#555e69;
+    font-weight: 700;
+  }
+  
+.form-group:last-of-type::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 700;
+    content: '\f084';
+  }
+ */
+@media (max-width: 340px){ 
+    .login {
+        margin-bottom: 20px;
+    }
+    
+    p{
+        font-size: 11px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 360px){ 
+    .login {
+        margin-bottom: 20px;
+    }
+    
+    p{
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
+}
+
+/* @media (max-height: 750px ){ 
+    .container{
+        margin-top: auto;
+    }
+}
+
+@media (max-height: 630px){ 
+    .div-login{
+        width: auto;
+    }
+} */
+

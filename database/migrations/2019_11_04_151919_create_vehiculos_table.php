@@ -27,8 +27,8 @@ class CreateVehiculosTable extends Migration
              */
             $table->string('empresa_soat','20')->nullable(); 
             $table->date('fecha_soat')->nullable();
-            $table->string('empresa_tecnica', 20)->nullable()->after('fecha_licencia');           
-            $table->date('fecha_tecnica')->nullable()->after('fecha_licencia'); 
+            $table->string('empresa_revision_tecnica', 20)->nullable();           
+            $table->date('fecha_revision_tecnica')->nullable(); 
             $table->enum('estado',['0','1']);
             $table->unsignedInteger('empresa_id');
         });

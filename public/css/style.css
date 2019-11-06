@@ -32,6 +32,8 @@
     position: relative;
 }
 
+.text-primary{color: var(--primary-color)!important}
+
 /* .form-group-dragon input{
     height:34px;
     background-color: transparent;
@@ -618,6 +620,10 @@ body{background: #f2f2f2}
 
 }
 
+.card-table i{
+    padding-bottom: 2px;
+}
+
 @media (max-width: 576px){
     .card-btn .col-12 {
         text-align: center !important;
@@ -731,20 +737,22 @@ body{background: #f2f2f2}
     margin-bottom: 60px;
 } 
 
-.form-control:not(:readonly):not(.readonly):focus {
-    color: #495057;
-    /* background-color: var(--blue-color) !important; */
-    border-color: var(--blue-color) !important;
-    outline: 0;
-    box-shadow: 0 0 2px 0.2rem rgba(167, 38, 27, 0.84)!important;
-}
-
 .form-control:focus {
     color: #495057;
-    /* background-color: var(--blue-color) !important; */
+    border-color: var(--blue-color) !important;
+    outline: 0;
+    box-shadow: 0 0px 4px 0.01rem rgba(167, 38, 27, 0.84)!important;
+}
+
+/* .form-control:focus {
+    color: #495057;
     border-color: transparent !important;
     outline: 0;
     box-shadow: 0 0 2px 0rem transparent!important;
+} */
+
+input{
+    display: inline-block;
 }
 
 .upload-btn-wrapper {
@@ -882,6 +890,42 @@ body{background: #f2f2f2}
 
   }
 
+  .create-foto {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .create-foto input {
+    cursor: pointer;
+    font-size: 100px;
+    filter: alpha(opacity=1);
+    -moz-opacity: 0.01;
+    opacity: 0.01;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .create-foto .button {
+    /* background: #a7261b; */
+    /* -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; */
+    
+    /* color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 5px;
+    padding:5px; */
+
+
+    /* width: 30px;
+    height: 30px;
+    border-radius: 50%; */
+
+  }
+
  /*  .file-wrapper.activa{
     margin-left: -70px;
     top: -10px;
@@ -890,5 +934,5 @@ body{background: #f2f2f2}
       margin-top: 8px;
   }
   .file-wrapper form{
-    display: inline; */
-}
+    display: inline; 
+}*/

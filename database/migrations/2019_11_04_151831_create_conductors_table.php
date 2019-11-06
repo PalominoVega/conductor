@@ -16,7 +16,7 @@ class CreateConductorsTable extends Migration
         Schema::create('conductor', function (Blueprint $table) {
             $table->increments('id');
             $table->string('foto', 20)->nullable();           
-            $table->string('dni');
+            $table->string('dni',8);
             $table->string('nombre','50');
             $table->string('apellido','50');
             $table->string("tipo_sangre",4);

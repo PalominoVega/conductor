@@ -1,18 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="registrar text-center">
-        <h4 class="">REGISTRO DE CONDUCTOR</h4>
-        <div class="card-avatar " hidden>
-            <img id=imgSalida src="" alt="" >
-        </div>
-        <div class="upload-btn-wrapper mt-2 ">
-            <button class="btn" id="btn-foto">Subir Foto</button>                                
-            <input id="txt-foto" name="file" type="file"readonly>
-        </div>
-    </div>
+    {{-- <div class="registrar text-center">
+        <h4 class="">REGISTRO DE V</h4>
+    </div> --}}
     <div class="card registrar my-5">
         <div class="card-header">
-            <div class="card-title">Datos del Conductor</div>
+            <div class="card-title">Datos del Vehiculo</div>
         </div>
 
         <div class="card-body ">
@@ -20,62 +13,59 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">DNI</label>
-                            <input type="text" name="dni" id="dni" class="form-control form-control-sm" readonly>
+                            <label for="">Placa</label>
+                            <input type="text" name="placa" id="placa" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">E-MAIL</label>
-                            <input type="text" name="emial" id="emial" class="form-control form-control-sm" readonly>
+                            <label for="">Marca</label>
+                            <input type="text" name="marca" id="marca" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">NOMBRES</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" readonly>
+                            <label for="">Modelo </label>
+                            <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">APELLIDOS</label>
-                            <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" readonly>
+                            <label for="">color</label>
+                            <input type="text" name="color" id="color" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">CELULAR</label>
-                            <input type="text" name="celular" id="celular" class="form-control form-control-sm" readonly>
+                            <label for="">año</label>
+                            <input type="text" name="año" id="año" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">TIPO DE SANGRE</label>
-                            <input type="text" name="tipo_sangre" id="tipo_sangre" class="form-control form-control-sm" readonly>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group">
-                            <label for="">DIRECCIÓN</label>
+                            <label for="">soat</label>
                             <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">FECHA DE NACIMIENTO</label>
-                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-sm" readonly>
+                            <label for="">FECHA DE caducidad</label>
+                            <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
-                            <label for="">LICENCIA DE CONDUCIR </label>
-                            <input type="text" name="categoria-licencia" id="categoria-licencia" class="form-control form-control-sm" readonly>
+                            <label for="">revisión técnica </label>
+                            <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">FECHA DE CADUCIDAD</label>
-                            <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" readonly>
+                            <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" readonly>
                         </div>
                     </div>
                     
