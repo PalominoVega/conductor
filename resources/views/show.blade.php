@@ -4,19 +4,28 @@
         <div class="col-12 col-sm-12 col-md-6 col-xl-4 col-perfil">
             <div class="card card-perfil ">
                 <div class="card-title-perfil text-center">
-                    <h4 class="text-white">REGISTRO DE CONDUCTOR</h4>
-                    <div class="card-avatar">
-                            {{-- <div class="div-config-logo"> --}}
-                                    <img id=imgSalida src="https://www.conoceatuconductor.com/iconos/user.png" alt="" >
-                            {{-- </div> --}}
-                            {{-- <div class="upload-btn-wrapper ">
-                                <button class="btn" id="btn-foto">Subir Foto</button>                                
-                                <input id="txt-foto" name="file" type="file"readonly>
-                            </div> --}}
-
+                    <h4 class="text-white">EDITAR DE CONDUCTOR</h4>
+                    <div class="card-avatar " >
+                        <img id=imgSalida src="https://www.conoceatuconductor.com/iconos/user.png" alt="" >
                     </div>
+                    
                 </div>
                 <div class="card-body">
+                    <form action="" method="get" class="mb-2">
+                        <span class="file-wrapper">
+                            <span class="button"><i class="fa fa-plus text-white" aria-hidden="true"></i></span>
+                            <input id="txt-foto" name="file" type="file"readonly>
+                        </span>
+                        <button type="submit" class="btn btn-primary mt-2" id="guardar-foto" hidden>Guardar Foto</button>
+                    </form>
+                        {{-- <div class="upload-btn-wrapper mt-2" >
+                            <button class="btn" id="btn-foto"><i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <form action="" method="get">
+                                <input id="txt-foto" name="file" type="file"readonly>
+                                <button type="submit" class="btn btn-primary" hidden>Guardar Foto</button>
+                            </form>
+                        </div> --}}
                     <div class="card-body-data">
                         {{-- <div class="form-group"> --}}
                             {{-- <label for=""><i class="fa fa-user" aria-hidden="true"></i>NOMBRES Y APELLIDOS</label> --}}
@@ -35,18 +44,18 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-primary" id="editar">Editar</button>
                 </div>
             </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-xl-6">
-            <div class="card registrar">
+            <div class="card ">
                 <div class="card-header">
                     <div class="card-title">Datos del Conductor</div>
                 </div>
 
                 <div class="card-body ">
-                    <form action="" method="post" >
+                    <form action="#" method="get" >
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
@@ -124,7 +133,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center" >
-                    <button class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="guardar" hidden>Guardar</button>
                 </div>
             </div>
         </div>
@@ -133,7 +142,7 @@
 @endsection
 
 
-@section('scripts')
+@section('script')
     <script>
         $(function() {
           $('#txt-foto').change(function(e) {
@@ -159,6 +168,26 @@
             }
           }
         );
+
+        $('body').on('click', '#editar', function(event) {
+            $("form").find(':input').each(function(){
+       		    $(this).removeAttr('readonly');
+            });
+            $('#guardar').removeAttr('hidden'); 
+            $('.upload-btn-wrapper').removeAttr('hidden'); 
+            $('#editar').attr('hidden','hidden');
+        });
+
+        $('body').on('click', '.file-wrapper', function(event) {
+            $('.file-wrapper').css({'margin-left':'90px'});
+            $('#guardar-foto').removeAttr('hidden'); 
+        });
+
+        @if (count($errors)>0)
+            $("form").find(':input').each(function(){
+       		    $(this).removeAttr('readonly');
+            });
+        @endif
 
     </script>
 @endsection

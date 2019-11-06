@@ -157,14 +157,7 @@
 
     }
 
-    setTimeout(() => {
-      
-      $.get("{{route('check')}}", {_csrf:csrf_token},function( data ) {
-        if(data.status==false){
-          window.location.href="{{route('login')}}";
-        }
-      });  
-    }, 1000);
+
   </script>
 </body>
 </html>

@@ -163,7 +163,7 @@
     background-color: var(--primary-color);
     padding: 10px 20px;
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     margin-top: -20px;
     line-height: 1;
@@ -638,7 +638,7 @@ body{background: #f2f2f2}
     padding: 20px 10px ;
     margin:0px
 }
-.card-avatar {
+.card-perfil .card-avatar {
     width: 140px;
     height: 140px;
     background-color: #fff;
@@ -651,6 +651,21 @@ body{background: #f2f2f2}
     padding: 5px;   
     box-shadow: 1px 3px 7px 1px #00000042;
   }
+
+  .registrar .card-avatar {
+    width: 140px;
+    height: 140px;
+    background-color: #fff;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    /* margin-bottom: -80px; */
+    padding: 5px;   
+    box-shadow: 1px 3px 7px 1px #00000042;
+  }
+
   .card-avatar img{
     width: 100%;
     transform: translate(0,-50%);
@@ -658,8 +673,10 @@ body{background: #f2f2f2}
   }
 
   .card-perfil .card-body{
-      margin-top: 80px;
+      margin-top: 70px;
       padding: 15px 50px;
+      text-align: center;
+      position: relative;
   }
   .card-perfil{
     box-shadow: 4px 4px 7px 1px #00000042;
@@ -667,6 +684,7 @@ body{background: #f2f2f2}
 
   .card-body-data p {
     line-height: 2;
+    text-align: justify;
   }
   .card-perfil i{
       margin-right: 20px;
@@ -699,9 +717,12 @@ body{background: #f2f2f2}
     border: 0px;
 }
 
-/* .card.registrar{
-    max-width: 690px;
-}*/
+.registrar{
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 10px */
+}
 
 .card-perfil{
     max-width: 430px;
@@ -726,6 +747,60 @@ body{background: #f2f2f2}
     box-shadow: 0 0 2px 0rem transparent!important;
 }
 
+.upload-btn-wrapper {
+    /* position: relative; */
+    position: absolute;
+    overflow: hidden;
+    display: inline-block;
+
+    top: -30px;
+    right: 36%;
+    border-radius: 50%;
+    background-color: #a7261b;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .upload-btn-wrapper i{
+      margin: auto;
+      padding: 5px;
+      color: #fff;
+  }
+  .upload-btn-wrapper i:hover{
+    color: #029E4B;
+    cursor: pointer;
+  }
+  .upload-btn-wrapper:hover{
+    color: #029E4B;
+    cursor: pointer;
+  }
+
+  #btn-foto{
+    border-radius: 20px;
+    box-sizing: border-box;
+    border-width: 2px;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 18px;
+    border-color: #66615B;
+    color: #66615B;
+    -webkit-transition: all 150ms linear;
+    -moz-transition: all 150ms linear;
+    -o-transition: all 150ms linear;
+    -ms-transition: all 150ms linear;
+    transition: all 150ms linear;
+    }
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+      .registrar h4{
+        color: var(--primary-color);
+    }
 @media (max-width: 460px){ 
     .img-panel-superior img{
         width: 200px;
@@ -759,4 +834,61 @@ body{background: #f2f2f2}
     .card-title{
         font-size: 16px;
     }
+
+    .upload-btn-wrapper {
+        right: 29%;
+    }
+
+   
+}
+
+.file-wrapper {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    /* position: relative; */
+    
+    position: absolute;
+    top: -25px;
+    margin-left: 25px;
+
+  }
+  .file-wrapper input {
+    cursor: pointer;
+    font-size: 100px;
+    filter: alpha(opacity=1);
+    -moz-opacity: 0.01;
+    opacity: 0.01;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .file-wrapper .button {
+    background: #a7261b;
+    /* -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; */
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 5px;
+    padding:5px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+  }
+
+ /*  .file-wrapper.activa{
+    margin-left: -70px;
+    top: -10px;
+  }
+  .file-wrapper .btn{
+      margin-top: 8px;
+  }
+  .file-wrapper form{
+    display: inline; */
 }
