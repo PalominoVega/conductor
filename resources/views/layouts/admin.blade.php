@@ -52,19 +52,19 @@
             </div>
             <div class="sidebar-body">
                 <ul>
-                    <li class="active">
+                    <li >
                         <a href="{{ route('conductor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
                     <li>
                         <a href="{{ route('vehiculo.index') }}"><i class="fa fa-car" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Asignación</a>
-                    </li> 
-                    {{-- <li>
-                        <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Notificaciones</a>
+                        <a href="{{ route('asignador.index') }}"><i class="fa fa-calendar-o" aria-hidden="true"></i>Asignación</a>
                     </li> 
                     <li>
+                        <a href="{{ route('alert.doc') }}"><i class="fa fa-calendar-o" aria-hidden="true"></i>Notificaciones</a>
+                    </li> 
+                    {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
                     </li>  --}}
                 </ul>
@@ -131,15 +131,17 @@
     var csrf_token="{{csrf_token()}}";
 
     var URLactual = window.location.href.replace("http://","").replace("https://","");
+
     $(document).ready(function(){
-        $(".navbar-sidenav .nav-item").each(function(){
-          var a=$(this).children('a.nav-link').attr('href').replace("http://","").replace("https://","");
+        $(".sidebar .sidebar-body ul li ").each(function(){
+          var a=$(this).children('a').attr('href').replace("http://","").replace("https://","");
+          
           if(URLactual==a){
             $(this).addClass('active');
-            var uls=$(this).parents('ul.sidenav-second-level');
-            if(uls.length==1){
-              uls.addClass('show');
-            }
+            // var uls=$(this).parents('ul.sidenav-second-level');
+            // if(uls.length==1){
+            //   uls.addClass('show');
+            // }
           }
         });
     });

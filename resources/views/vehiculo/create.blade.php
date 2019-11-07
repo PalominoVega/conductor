@@ -3,42 +3,53 @@
     {{-- <div class="registrar text-center">
         <h4 class="">REGISTRO DE V</h4>
     </div> --}}
+    @if (count($errors))
+      @foreach ($errors->all() as $item)
+          <span class="error">{{$item}}</span><br>
+      @endforeach
+    @endif
     <div class="card registrar my-5">
         <div class="card-header">
             <div class="card-title">Datos del Vehiculo</div>
         </div>
-
-        <div class="card-body ">
-            <form action="" method="post" >
+        <form action="{{ route('vehiculo.store') }}" method="post" >
+                @csrf
+            <div class="card-body ">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
+                            <label for="">UNIDAD</label>
+                            <input type="text" name="unidad" id="unidad" class="form-control form-control-sm" >
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class="form-group">
                             <label for="">Placa</label>
-                            <input type="text" name="placa" id="placa" class="form-control form-control-sm" readonly>
+                            <input type="text" name="placa" id="placa" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">Marca</label>
-                            <input type="text" name="marca" id="marca" class="form-control form-control-sm" readonly>
+                            <input type="text" name="marca" id="marca" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">Modelo </label>
-                            <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" readonly>
+                            <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">color</label>
-                            <input type="text" name="color" id="color" class="form-control form-control-sm" readonly>
+                            <input type="text" name="color" id="color" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">año</label>
-                            <input type="text" name="año" id="año" class="form-control form-control-sm" readonly>
+                            <input type="text" name="año" id="año" class="form-control form-control-sm" >
                         </div>
                     </div>
                 </div>
@@ -47,34 +58,35 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">soat</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" readonly>
+                            <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">FECHA DE caducidad</label>
-                            <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" readonly>
+                            <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">revisión técnica </label>
-                            <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" readonly>
+                            <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">FECHA DE CADUCIDAD</label>
-                            <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" readonly>
+                            <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" >
                         </div>
                     </div>
                     
                 </div>    
-            </form>
-        </div>
-        <div class="card-footer text-center" >
-            <button class="btn btn-primary">Guardar</button>
-        </div>
+            </div>
+            <div class="card-footer text-center" >
+                <button class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+
     </div>
 
 @endsection

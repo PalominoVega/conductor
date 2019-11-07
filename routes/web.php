@@ -38,13 +38,14 @@ Route::get('cerrar/', 'LoginController@cerrar_session')->name('cerrar');
  * Asignador de Vehiculo
  */
 Route::put('asignador/conductor/{id}','AsignadorController@updateVehiculo')->name('asignador.update.conductor');
+Route::get('asignador/ajax','AsignadorController@ajax')->name('asignador.ajax');
 Route::post('asignador/conductor','AsignadorController@storeVehiculo')->name('asignador.store.conductor');
-Route::get('asignador/index','AsignadorController@index')->name('asignador.index');
+Route::get('asignador','AsignadorController@index')->name('asignador.index');
 
 /**
  * Conductor
  */
-Route::put('asignador/conductor/{id}','ConductorController@updateFoto')->name('conductor.update.foto');
+Route::put('foto/conductor/{id}','ConductorController@updateFoto')->name('conductor.update.foto');
 Route::put('conductor/{id}','ConductorController@cambiar_Estado')->name('conductor.estado');
 Route::get('conductor/deshabilitado','ConductorController@deshabilitados')->name('conductor.deshabilitado');
 Route::resource('conductor','ConductorController')/* ->middleware('') */;
@@ -52,6 +53,14 @@ Route::resource('conductor','ConductorController')/* ->middleware('') */;
 /**
  * Vehiculo 
  */
+Route::put('vehiculo/{id}','VehiculoController@cambiar_Estado')->name('vehiculo.estado');
 Route::resource('vehiculo','VehiculoController')/* ->only([
     'index', 'show','store','update'
 ]) */;
+
+/**
+ * notificaciones
+ */
+Route::get('notificacion','NotificacionesController@alerta_docs')->name('alert.doc');
+
+

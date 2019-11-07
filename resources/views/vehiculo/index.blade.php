@@ -20,7 +20,7 @@
                         <th>Unidad</th>
                         <th>Placa</th>
                         <th>Detalles</th>
-                        <th>Estado</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                             </td>
                             <td class="text-center">
                                 <a  class="text-primary estado" id="{{$vehiculo->id}}" data-nombre="{{$vehiculo->placa}}">
-                                    <i class="fa fa-dot-circle-o text-primary"></i>
+                                    <i class="fa fa-trash text-primary"></i>
                                 </a>
                             </td>
                         </tr>
@@ -49,10 +49,10 @@
     <script>
        
        $('body').on('click', '.estado', function(event) {
-            let conductor =$(this).attr('data-nombre');
+            let vehiculo =$(this).attr('data-nombre');
             // let estado=$(this).children('i').attr('class')=='fa fa-dot-circle-o text-primary' ? 'Desactivar':'Activar';
-            let title='¿Está seguro de deshabilitar  a '+conductor+' ?';
-            let conductor_id=this.id;
+            let title='¿Está seguro de eliminar  a '+vehiculo+' ?';
+            let vehiculo_id=this.id;
         
             swal({
                 title: title,
@@ -63,8 +63,8 @@
                 })
                 .then((willDelete) => {
                 if (willDelete) {
-                    var url="{{route('conductor.estado','_id_')}}";
-                    var url_update= url.replace('_id_',conductor_id);
+                    var url="{{route('vehiculo.estado','_id_')}}";
+                    var url_update= url.replace('_id_',vehiculo_id);
                     $.ajax({
                         url:url_update, 
                         method:"post",
@@ -84,9 +84,9 @@
                         }
                     });
 
-                    swal("Poof! Your imaginary file has been deleted!", {
-                    icon: "success",
-                    });
+                    // swal("Poof! Your imaginary file has been deleted!", {
+                    // icon: "success",
+                    // });
                 } /* else {
                     swal("Your imaginary file is safe!");
                 } */

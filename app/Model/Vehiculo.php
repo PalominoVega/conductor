@@ -13,4 +13,10 @@ class Vehiculo extends Model
     {
         return $this->belongsTo('App\Model\Empresa');
     }
+
+    public function conductor()
+    {
+        // return $this->hasMany('App\Costo_fijo');
+        return $this->hasMany('App\Model\Conductor');
+    }
 }

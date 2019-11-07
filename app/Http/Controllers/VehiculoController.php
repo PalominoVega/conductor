@@ -19,7 +19,7 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculos=Vehiculo::where('empresa_id',auth()->user()->empresa_id)->orderBy('estado','asc')->get();
+        $vehiculos=Vehiculo::where('empresa_id',auth()->user()->empresa_id)->where('estado','0')->get();
         return view('vehiculo.index', compact('vehiculos'));
     }
 
@@ -60,8 +60,8 @@ class VehiculoController extends Controller
              */
             $vehiculo->empresa_soat=mb_strtoupper($request->soat);
             $vehiculo->fecha_soat=$request->get('fecha_soat');
-            $vehiculo->empresa_tecnica=mb_strtoupper($request->get('revicion_tecnica'));
-            $vehiculo->fecha_tecnica=$request->get('fecha_tecnica');
+            $vehiculo->empresa_revision_tecnica=mb_strtoupper($request->get('empresa_revision_tecnica'));
+            $vehiculo->fecha_revision_tecnica=$request->get('fecha_revision_tecnica');
 
             $vehiculo->empresa_id=auth()->user()->empresa_id;
             $vehiculo->save();
@@ -86,7 +86,7 @@ class VehiculoController extends Controller
      */
     public function show($vehiculo_id)
     {
-        $vehiculo=Vehiculo::where('id',$vehiculo_id)->get();
+        $vehiculo=Vehiculo::where('id',$vehiculo_id)->first();
         return view('vehiculo.show', compact('vehiculo'));
     }
 
@@ -115,7 +115,7 @@ class VehiculoController extends Controller
             /**
              * datos del vehiculo
              */
-            $vehiculo=Vehiculo::where('id',$vehiculo_id)->get();
+            $vehiculo=Vehiculo::where('id',$vehiculo_id)->first();
             $vehiculo->unidad=mb_strtoupper($request->get('unidad'));
             $vehiculo->placa=mb_strtoupper($request->get('placa'));
             $vehiculo->marca=mb_strtoupper($request->get('marca'));
@@ -128,13 +128,13 @@ class VehiculoController extends Controller
              */
             $vehiculo->empresa_soat=mb_strtoupper($request->soat);
             $vehiculo->fecha_soat=$request->get('fecha_soat');
-            $vehiculo->empresa_tecnica=mb_strtoupper($request->get('revicion_tecnica'));
-            $vehiculo->fecha_tecnica=$request->get('fecha_tecnica');
+            $vehiculo->empresa_revision_tecnica=mb_strtoupper($request->get('empresa_revision_tecnica'));
+            $vehiculo->fecha_revision_tecnica=$request->get('fecha_revision_tecnica');
 
             $vehiculo->save();
             DB::commit();
             alert()->success($vehiculo->placa,'Datos actualizados correctamente');
-            return redirect()->route('vehiculo.index');
+            return redirect()->route('vehiculo.show',$vehiculo->id);
         }catch(\Exception $e){
 
             DB::rollback();
@@ -157,10 +157,11 @@ class VehiculoController extends Controller
 
     public function cambiar_Estado($vehiculo_id)
     {
+
         DB::beginTransaction();
 
         try {
-            $vehiculo=Vehiculo::where('id',$vehiculo_id)->get();
+            $vehiculo=Vehiculo::where('id',$vehiculo_id)->first();
                         
             $estado = ($vehiculo->estado=='0') ? '1': '0'; //saber el estado actual y cambiarlo
             

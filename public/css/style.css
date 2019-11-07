@@ -905,6 +905,13 @@ input{
     right: 0;
     top: 0;
   }
+
+
+  #asignar i{
+      cursor: pointer;
+  }
+
+
   .create-foto .button {
     /* background: #a7261b; */
     /* -moz-border-radius: 5px;
