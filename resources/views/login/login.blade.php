@@ -3,7 +3,7 @@
 @section('content')
 <div class=" div-login" >
     @if (count($errors))
-      {{-- {{$errors}} --}}
+      {{$errors}}
       @foreach ($errors->all() as $item)
           <span class="error">{{$item}}</span><br>
       @endforeach
@@ -36,14 +36,9 @@
 
       var error="{{$errors}}";
       console.log(error);
-
-            
-      $(document).ready(function(){
-            var conceptos = @json($errors);
-            console.log(conceptos);
-            
-           
-        });
+      var app = <?php echo json_encode($errors); ?>;
+      console.log(app);
+      
 
     </script>
 @endsection

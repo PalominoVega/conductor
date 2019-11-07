@@ -19,9 +19,9 @@ Auth::routes();
 
 /* login */
 Route::get('/', function () {
-    if(Auth::check()){
-        return view('conductor.index');
-    }
+    // if(Auth::check()){
+    //     return view('conductor.index');
+    // }
     return view('login.login');
 })->name('login');
 
