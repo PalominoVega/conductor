@@ -1,11 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    
-    @if (count($errors))
-      @foreach ($errors->all() as $item)
-          <span class="error">{{$item}}</span><br>
-      @endforeach
-    @endif
+ 
 <form action="{{ route('conductor.store') }}" method="post" enctype="multipart/form-data"   >
     @csrf
     <div class="registrar text-center">
@@ -32,37 +27,37 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">DNI</label>
-                        <input type="text" name="dni" id="dni" class="form-control form-control-sm" >
+                        <input type="text" name="dni" id="dni" class="form-control form-control-sm" value="{{old('dni')}}"  >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">E-MAIL</label>
-                        <input type="text" name="emial" id="emial" class="form-control form-control-sm" >
+                        <input type="text" name="email" id="email" class="form-control form-control-sm" value="{{old('email')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">NOMBRES</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" >
+                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" value="{{old('nombre')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">APELLIDOS</label>
-                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" >
+                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" value="{{old('apellido')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">CELULAR</label>
-                        <input type="text" name="celular" id="celular" class="form-control form-control-sm" >
+                        <input type="text" name="celular" id="celular" class="form-control form-control-sm" value="{{old('celular')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">TIPO DE SANGRE</label>
-                        {{-- <input type="text" name="tipo_sangre" id="tipo_sangre" class="form-control form-control-sm" > --}}
+                        {{-- <input type="text" name="tipo_sangre" id="tipo_sangre" class="form-control form-control-sm" value="{{old('')}}" > --}}
                         {{-- <label>Tipo de Sangre</label> --}}
                         <select name="tipo_sangre" class="form-control">
                             <option value=""></option>
@@ -80,25 +75,25 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">DIRECCIÓN</label>
-                        <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" >
+                        <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" value="{{old('direccion')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">FECHA DE NACIMIENTO</label>
-                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-sm" >
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-sm" value="{{old('fecha_nacimiento')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">LICENCIA DE CONDUCIR </label>
-                        <input type="text" name="categoria_licencia" id="categoria_licencia" class="form-control form-control-sm" >
+                        <input type="text" name="categoria_licencia" id="categoria_licencia" class="form-control form-control-sm" value="{{old('categoria_licencia')}}" >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">FECHA DE CADUCIDAD</label>
-                        <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" >
+                        <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" value="{{old('fecha_licencia')}}" >
                     </div>
                 </div>
                 
@@ -138,6 +133,30 @@
             }
           }
         );
+        
+        $(document).ready(function(){
+            if(@json($errors->any())){
+
+                // var p=@json($errors->default);
+                
+                 var error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
+                 
+                var errores=error;
+                var arrKeys=Object.keys(errores);
+                
+                for (let index = 0; index < arrKeys.length; index++) {
+                    var indexName=arrKeys[index];
+                    if(index==0){
+                        $(' [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
+                        .append($('<span>').html(errores[indexName]).addClass('error'));
+                    }else{
+                        $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
+                            .append($('<span>').html(errores[indexName]).addClass('error'));
+                    }
+                }
+            }
+        
+        });
 
     </script>
 @endsection

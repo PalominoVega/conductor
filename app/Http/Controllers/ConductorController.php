@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ConductorValidation;
+use App\Http\Requests\ConductorUpdateValidation;
 use Peru\Http\ContextClient;
 use Peru\Jne\{Dni, DniParser};
 use Peru\Sunat\{HtmlParser, Ruc, RucParser};
@@ -54,7 +55,7 @@ class ConductorController extends Controller
              */
             $conductor=new Conductor();
             $conductor->dni=$request->get('dni');
-            $conductor->email=$request->get('emial');
+            $conductor->email=$request->get('email');
             $conductor->nombre=mb_strtoupper($request->get('nombre'));
             $conductor->apellido=mb_strtoupper($request->get('apellido'));
             $conductor->tipo_sangre=mb_strtoupper($request->get('tipo_sangre'));
@@ -120,7 +121,7 @@ class ConductorController extends Controller
      * @param  \App\Model\Conductor  $conductor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $conductor_id)
+    public function update(ConductorUpdateValidation $request, $conductor_id)
     {
         // dd($request->all());
 

@@ -35,62 +35,62 @@
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">unidad</label>
-                                    <input type="text" name="unidad" id="unidad" class="form-control form-control-sm" value="{{$vehiculo->unidad}}" readonly>
+                                    <input type="text" name="unidad" id="unidad" class="form-control form-control-sm" value="{{(old('unidad'), $vehiculo->unidad)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">placa</label>
-                                    <input type="text" name="placa" id="placa" class="form-control form-control-sm" value="{{$vehiculo->placa}}" readonly>
+                                    <input type="text" name="placa" id="placa" class="form-control form-control-sm" value="{{(old('placa'), $vehiculo->placa)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">marca</label>
-                                    <input type="text" name="marca" id="marca" class="form-control form-control-sm" value="{{$vehiculo->marca}}" readonly>
+                                    <input type="text" name="marca" id="marca" class="form-control form-control-sm" value="{{(old('marca'), $vehiculo->marca)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">modelo</label>
-                                    <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" value="{{$vehiculo->modelo}}" readonly>
+                                    <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" value="{{(old('modelo'), $vehiculo->modelo)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">color</label>
-                                    <input type="text" name="color" id="color" class="form-control form-control-sm" value="{{$vehiculo->color}}" readonly>
+                                    <input type="text" name="color" id="color" class="form-control form-control-sm" value="{{(old('color'), $vehiculo->color)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">año</label>
-                                    <input type="text" name="anio" id="anio" class="form-control form-control-sm" value="{{$vehiculo->anio}}" readonly>
+                                    <input type="text" name="anio" id="anio" class="form-control form-control-sm" value="{{(old('anio'), $vehiculo->anio)}}" readonly>
                                 </div>
                             </div>
                             
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">soat</label>
-                                    <input type="text" name="soat" id="soat" class="form-control form-control-sm" value="{{$vehiculo->soat}}" readonly>
+                                    <input type="text" name="soat" id="soat" class="form-control form-control-sm" value="{{(old('soat'), $vehiculo->soat)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">FECHA DE CADUCIDAD</label>
-                                    <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" value="{{$vehiculo->fecha_soat}}" readonly>
+                                    <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" value="{{(old('fecha_soat'), $vehiculo->fecha_soat)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">revision tecnica </label>
-                                    <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" value="{{$vehiculo->empresa_revision_tecnica}}" readonly>
+                                    <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" value="{{(old('empresa_revision_tecnica'), $vehiculo->empresa_revision_tecnica)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">FECHA DE CADUCIDAD</label>
-                                    <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" value="{{$vehiculo->fecha_revision_tecnica}}" readonly>
+                                    <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" value="{{(old('fecha_revision_tecnica'), $vehiculo->fecha_revision_tecnica)}}" readonly>
                                 </div>
                             </div>
                             {{-- <div class="col-12 col-sm-6">

@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 @section('content')
+@if (count($errors))
+{{$errors}}
+@foreach ($errors->all() as $item)
+    <span class="error">{{$item}}</span><br>
+@endforeach
+@endif
     <div class="row align-items-center justify-content-center row-perfil">
         <div class="col-12 col-sm-12 col-md-6 col-xl-4 col-perfil">
             <div class="card card-perfil ">
@@ -57,66 +63,70 @@
                     </div>
 
                     <div class="card-body ">
-                        <form action="#" method="get" >
+                        @if (old('dni'))
+                            hola
+                        @else
+                            hola2
+                        @endif
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">DNI</label>
-                                        <input type="text" name="dni" id="dni" class="form-control form-control-sm"  value="{{$conductor->dni}}" readonly>
+                                        <input type="text" name="dni" id="dni" class="form-control form-control-sm"  value="{{ old('dni',$conductor->dni)  }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">E-MAIL</label>
-                                        <input type="text" name="emial" id="emial" class="form-control form-control-sm" value="{{$conductor->email}}" readonly>
+                                        <input type="text" name="email" id="email" class="form-control form-control-sm" value="{{ old('email', $conductor->email)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">NOMBRES</label>
-                                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" value="{{$conductor->nombre}}" readonly>
+                                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" value="{{old('nombre' ,$conductor->nombre)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">APELLIDOS</label>
-                                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" value="{{$conductor->apellido}}" readonly>
+                                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" value="{{old('apellido' ,$conductor->apellido)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">CELULAR</label>
-                                        <input type="text" name="celular" id="celular" class="form-control form-control-sm" value="{{$conductor->celular}}" readonly>
+                                        <input type="text" name="celular" id="celular" class="form-control form-control-sm" value="{{old('celular' ,$conductor->celular)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">TIPO DE SANGRE</label>
-                                        <input type="text" name="tipo_sangre" id="tipo_sangre" class="form-control form-control-sm" value="{{$conductor->tipo_sangre}}" readonly>
+                                        <input type="text" name="tipo_sangre" id="tipo_sangre" class="form-control form-control-sm" value="{{old('tipo_sangre' ,$conductor->tipo_sangre)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">DIRECCIÓN</label>
-                                        <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" value="{{$conductor->direccion}}" readonly>
+                                        <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" value="{{old('direccion' ,$conductor->direccion)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">FECHA DE NACIMIENTO</label>
-                                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-sm" value="{{$conductor->fecha_nacimiento}}" readonly>
+                                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-sm" value="{{old('fecha_nacimiento' ,$conductor->fecha_nacimiento)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">LICENCIA DE CONDUCIR </label>
-                                        <input type="text" name="categoria_licencia" id="categoria_licencia" class="form-control form-control-sm" value="{{$conductor->categoria_licencia}}" readonly>
+                                        <input type="text" name="categoria_licencia" id="categoria_licencia" class="form-control form-control-sm" value="{{old('categoria_licencia' ,$conductor->categoria_licencia)}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">FECHA DE CADUCIDAD</label>
-                                        <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" value="{{$conductor->fecha_licencia}}" readonly>
+                                        <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" value="{{old('fecha_licencia' ,$conductor->fecha_licencia)}}" readonly>
                                     </div>
                                 </div>
                                 {{-- <div class="col-12 col-sm-6">
@@ -132,7 +142,6 @@
                                     </div>
                                 </div>     --}}
                             </div>    
-                        </form>
                     </div>
                     <div class="card-footer text-center" >
                         <button type="submit" class="btn btn-primary" id="guardar" hidden>Guardar</button>

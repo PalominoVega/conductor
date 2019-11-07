@@ -941,6 +941,14 @@ input{
         src: url("../css/font-montserrat/Montserrat-Thin.ttf")
     }
 
+    .input-error {
+        border: 1px solid #a7261b;
+    }
+
+    .error {
+        color: #939292;
+    }
+
 .btn {
 
 }

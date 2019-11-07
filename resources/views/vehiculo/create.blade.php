@@ -19,37 +19,37 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">UNIDAD</label>
-                            <input type="text" name="unidad" id="unidad" class="form-control form-control-sm" >
+                            <input type="text" name="unidad" id="unidad" class="form-control form-control-sm" value="{{old('unidad')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">Placa</label>
-                            <input type="text" name="placa" id="placa" class="form-control form-control-sm" >
+                            <input type="text" name="placa" id="placa" class="form-control form-control-sm" value="{{old('placa')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">Marca</label>
-                            <input type="text" name="marca" id="marca" class="form-control form-control-sm" >
+                            <input type="text" name="marca" id="marca" class="form-control form-control-sm" value="{{old('marca')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">Modelo </label>
-                            <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" >
+                            <input type="text" name="modelo" id="modelo" class="form-control form-control-sm" value="{{old('modelo')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">color</label>
-                            <input type="text" name="color" id="color" class="form-control form-control-sm" >
+                            <input type="text" name="color" id="color" class="form-control form-control-sm" value="{{old('color')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">año</label>
-                            <input type="text" name="año" id="año" class="form-control form-control-sm" >
+                            <input type="text" name="año" id="año" class="form-control form-control-sm" value="{{old('año')}}">
                         </div>
                     </div>
                 </div>
@@ -58,25 +58,25 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">soat</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" >
+                            <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" value="{{old('direccion')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">FECHA DE caducidad</label>
-                            <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" >
+                            <input type="date" name="fecha_soat" id="fecha_soat" class="form-control form-control-sm" value="{{old('fecha_soat')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">revisión técnica </label>
-                            <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" >
+                            <input type="text" name="empresa_revision_tecnica" id="empresa_revision_tecnica" class="form-control form-control-sm" value="{{old('empresa_revision_tecnica')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">FECHA DE CADUCIDAD</label>
-                            <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" >
+                            <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" value="{{old('fecha_revision_tecnica')}}">
                         </div>
                     </div>
                     

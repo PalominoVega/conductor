@@ -34,10 +34,7 @@
 @section('script')
     <script>
 
-      var error="{{$errors}}";
-      console.log(error);
-      var app = <?php echo json_encode($errors); ?>;
-      console.log(app);
+      
       
 
     </script>

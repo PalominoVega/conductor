@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Illuminate\Validation\Rule;
 use App\Rules\DniRule;
 use App\Rules\CelularRule;
 
-class ConductorValidation extends FormRequest
+class ConductorUpdateValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +16,7 @@ class ConductorValidation extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return true ;
     }
 
     /**
@@ -27,11 +26,14 @@ class ConductorValidation extends FormRequest
      */
     public function rules()
     {
+        $parametros=$this->route()->parameters();
+        $conductor_id=$parametros['conductor'];
+
         return [
             'file'=>'nullable',
             'dni'=>['required',new DniRule(),
-                Rule::unique('conductor')->where(function ($query) {
-                    return $query->where('empresa_id',auth()->user()->empresa_id);
+                Rule::unique('conductor')->where(function ($query) use($conductor_id) {
+                    return $query->where('empresa_id',auth()->user()->empresa_id)->where('id','<>',$conductor_id);
                 })
             ],
             'email'=>'email|max:100|nullable',
