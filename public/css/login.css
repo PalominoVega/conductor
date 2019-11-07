@@ -155,3 +155,38 @@ a, a:hover{
     }
 } */
 
+@font-face {
+    font-family: 'Montserrat-regular';
+    src: url("../css/font-montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat-bold';
+    src: url("../css/font-montserrat/Montserrat-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat-light';
+    src: url("../css/font-montserrat/Montserrat-Thin.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat-semiBold';
+    src: url("../css/font-montserrat/Montserrat-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat-medium';
+    src: url("../css/font-montserrat/Montserrat-Medium.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat-thin';
+    src: url("../css/font-montserrat/Montserrat-Thin.ttf")
+}
+
+*{
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat','Montserrat-regular' ;
+    font-weight: 500;
+}

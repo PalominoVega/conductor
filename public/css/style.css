@@ -15,7 +15,7 @@
 
 *{
     /* font-family: 'Roboto', sans-serif; */
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat','Montserrat-regular' ;
     font-weight: 500;
 }
 .form-group-dragon input:focus,.form-group-dragon textarea:focus{
@@ -644,7 +644,7 @@ body{background: #f2f2f2}
     padding: 20px 10px ;
     margin:0px
 }
-.card-perfil .card-avatar {
+    .card-perfil .card-avatar {
     width: 140px;
     height: 140px;
     background-color: #fff;
@@ -670,7 +670,7 @@ body{background: #f2f2f2}
     /* margin-bottom: -80px; */
     padding: 5px;   
     box-shadow: 1px 3px 7px 1px #00000042;
-  }
+}
 
   .card-avatar img{
     width: 100%;
@@ -707,14 +707,13 @@ body{background: #f2f2f2}
     margin-bottom: -20px;
   }
 
-  .card-body form label{
+  form .card-body  label{
       color: #a7261b;
       text-transform: uppercase;
       font-size: 14px;
       margin:0px;
   }
 .card-body form input{
-    border: ;    
 }
 
 .form-control:disabled, .form-control[readonly] {
@@ -912,6 +911,39 @@ input{
   }
 
 
+     @font-face {
+        font-family: 'Montserrat-regular';
+        src: url("../css/font-montserrat/Montserrat-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: 'Montserrat-bold';
+        src: url("../css/font-montserrat/Montserrat-Bold.ttf");
+    }
+
+    @font-face {
+        font-family: 'Montserrat-light';
+        src: url("../css/font-montserrat/Montserrat-Thin.ttf");
+    }
+
+    @font-face {
+        font-family: 'Montserrat-semiBold';
+        src: url("../css/font-montserrat/Montserrat-SemiBold.ttf");
+    }
+
+    @font-face {
+        font-family: 'Montserrat-medium';
+        src: url("../css/font-montserrat/Montserrat-Medium.ttf");
+    }
+
+    @font-face {
+        font-family: 'Montserrat-thin';
+        src: url("../css/font-montserrat/Montserrat-Thin.ttf")
+    }
+
+.btn {
+
+}
   .create-foto .button {
     /* background: #a7261b; */
     /* -moz-border-radius: 5px;

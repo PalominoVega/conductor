@@ -8,25 +8,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Flota  </title>
-
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Black.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-BlackItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Bold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-BoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraBold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraBoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraLight.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraLightItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Italic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Light.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-LightItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Medium.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-MediumItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Regular.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Thin.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ThinItalic.ttf" />
   
   {{-- Booststrap  --}}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -61,6 +42,8 @@
       </div>
     </footer>
 
+
+
     
   {{-- booststrap y jquery --}}
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -72,6 +55,36 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   @yield('script') 
   @include('sweet::alert')
+
+  <script>
+
+    
+    
+    /**
+    * Validaciones
+    */
+    function limpiarErrores(){$('.has-error strong').remove();$('div.form-group.has-error').removeClass('has-error');$('.input-error').removeClass('input-error')}
+    function mostrarErrores(form, error){
+        var errores=error.responseJSON.errors;
+        limpiarErrores();
+        var arrKeys=Object.keys(errores);
+        for (let index = 0; index < arrKeys.length; index++) {
+            var indexName=arrKeys[index];
+            if(index==0){
+                $('#'+form+' [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
+                .append($('<strong>').html(errores[indexName]).addClass('error'));
+            }else{
+                $('#'+form+' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
+                    .append($('<strong>').html(errores[indexName]).addClass('error'));
+            }
+        }
+    }
+    function limpiarCampos(form){
+        $('#'+form+' input[name!=_token][name!=_method][type!=radio]').val("");
+        $('#'+form+' select').val("")
+    }
+    
+  </script>
   
 </body>
 </html>

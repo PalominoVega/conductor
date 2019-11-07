@@ -54,6 +54,7 @@ class ConductorController extends Controller
              */
             $conductor=new Conductor();
             $conductor->dni=$request->get('dni');
+            $conductor->email=$request->get('emial');
             $conductor->nombre=mb_strtoupper($request->get('nombre'));
             $conductor->apellido=mb_strtoupper($request->get('apellido'));
             $conductor->tipo_sangre=mb_strtoupper($request->get('tipo_sangre'));
@@ -73,7 +74,7 @@ class ConductorController extends Controller
             /**
              * Documentacion y fecha de vigencia de los mismos
              */
-            $conductor->categoria_licencia=mb_strtoupper($request->licencia);
+            $conductor->categoria_licencia=mb_strtoupper($request->categoria_licencia);
             $conductor->fecha_licencia=$request->get('fecha_licencia');
 
             $conductor->empresa_id=auth()->user()->empresa_id;
@@ -121,6 +122,8 @@ class ConductorController extends Controller
      */
     public function update(Request $request, $conductor_id)
     {
+        // dd($request->all());
+
         DB::beginTransaction();
 
         try {
@@ -129,6 +132,7 @@ class ConductorController extends Controller
              */
             $conductor=Conductor::where('id',$conductor_id)->first();
             $conductor->dni=$request->get('dni');
+            $conductor->email=$request->get('emial');
             $conductor->nombre=mb_strtoupper($request->get('nombre'));
             $conductor->apellido=mb_strtoupper($request->get('apellido'));
             $conductor->tipo_sangre=mb_strtoupper($request->get('tipo_sangre'));
@@ -147,7 +151,7 @@ class ConductorController extends Controller
             /**
              * Documentacion y fecha de vigencia de los mismos
              */
-            $conductor->categoria_licencia=mb_strtoupper($request->licencia);
+            $conductor->categoria_licencia=mb_strtoupper($request->categoria_licencia);
             $conductor->fecha_licencia=$request->get('fecha_licencia');
 
             $conductor->save();

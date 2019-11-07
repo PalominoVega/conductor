@@ -110,7 +110,7 @@
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="">LICENCIA DE CONDUCIR </label>
-                                        <input type="text" name="categoria-licencia" id="categoria-licencia" class="form-control form-control-sm" value="{{$conductor->categoria_licencia}}" readonly>
+                                        <input type="text" name="categoria_licencia" id="categoria_licencia" class="form-control form-control-sm" value="{{$conductor->categoria_licencia}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">

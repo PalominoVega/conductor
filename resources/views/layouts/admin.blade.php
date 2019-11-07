@@ -9,24 +9,7 @@
   <meta name="author" content="">
   <title>Flota  </title>
 
-  {{-- <link rel="stylesheet" href="css/font-montserrat/Montserrat-Black.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-BlackItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Bold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-BoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraBold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraBoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraLight.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ExtraLightItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Italic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Light.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-LightItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Medium.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-MediumItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Regular.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBold.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-SemiBoldItalic.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-Thin.ttf" />
-  <link rel="stylesheet" href="css/font-montserrat/Montserrat-ThinItalic.ttf" /> --}}
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{-- Booststrap  --}}
