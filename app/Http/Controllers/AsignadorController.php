@@ -14,7 +14,7 @@ class AsignadorController extends Controller
     
     public function index()
     {
-        $vehiculos=Vehiculo::with('conductor')->select('vehiculo.id' ,'placa')->get();
+        $vehiculos=Vehiculo::with('conductor')->select('vehiculo.id' ,'placa')->where('estado','0')->get();
         $conductores=Conductor::select('id', 'nombre', 'apellido')
             ->where('empresa_id',auth()->user()->empresa_id)
             ->where('estado','0')
@@ -59,7 +59,7 @@ class AsignadorController extends Controller
 
     public function storeVehiculo(Request $request )
     {
-
+        echo json_encode($request->all());
         DB::beginTransaction();
 
         try {

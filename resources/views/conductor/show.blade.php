@@ -1,11 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@if (count($errors))
-{{$errors}}
-@foreach ($errors->all() as $item)
-    <span class="error">{{$item}}</span><br>
-@endforeach
-@endif
+
     <div class="row align-items-center justify-content-center row-perfil">
         <div class="col-12 col-sm-12 col-md-6 col-xl-4 col-perfil">
             <div class="card card-perfil ">
@@ -24,24 +19,10 @@
                         </span>
                         <button type="submit" class="btn btn-primary mt-2" id="guardar-foto" hidden>Guardar Foto</button>
                     </form>
-                        {{-- <div class="upload-btn-wrapper mt-2" >
-                            <button class="btn" id="btn-foto"><i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            <form action="" method="get">
-                                <input id="txt-foto" name="file" type="file"readonly>
-                                <button type="submit" class="btn btn-primary" hidden>Guardar Foto</button>
-                            </form>
-                        </div> --}}
                     <div class="card-body-data">
-                        {{-- <div class="form-group"> --}}
-                            {{-- <label for=""><i class="fa fa-user" aria-hidden="true"></i>NOMBRES Y APELLIDOS</label> --}}
-                        {{-- </div> --}}
-                        {{-- <div class="form-group"> --}}
-                            {{-- <label for=""> <i class="fa fa-id-card" aria-hidden="true"></i>12345678 </label> --}}
-                        {{-- </div> --}}
-                        {{-- <div class="form-group"> --}}
-                            {{-- <label for=""><i class="fa fa-phone" aria-hidden="true"></i>123456789</label> --}}
-                        {{-- </div> --}}
+                        @if ($conductor->estado==1)
+                            <p class="text-estado">Deshabilitado</p>
+                        @endif
                         <p>
                         <i class="fa fa-user" aria-hidden="true"></i> {{$conductor->nombre.' '.$conductor->apellidos}}<br>
                             <i class="fa fa-id-card" aria-hidden="true"></i>{{$conductor->dni}} <br>
@@ -63,11 +44,6 @@
                     </div>
 
                     <div class="card-body ">
-                        @if (old('dni'))
-                            hola
-                        @else
-                            hola2
-                        @endif
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                     <div class="form-group">
@@ -129,18 +105,7 @@
                                         <input type="date" name="fecha_licencia" id="fecha_licencia" class="form-control form-control-sm" value="{{old('fecha_licencia' ,$conductor->fecha_licencia)}}" readonly>
                                     </div>
                                 </div>
-                                {{-- <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label for=""></label>
-                                        <input type="text" name="" id="" class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label for=""></label>
-                                        <input type="text" name="" id="" class="form-control" readonly>
-                                    </div>
-                                </div>     --}}
+                                
                             </div>    
                     </div>
                     <div class="card-footer text-center" >
@@ -157,29 +122,51 @@
 @section('script')
     <script>
         $(function() {
-          $('#txt-foto').change(function(e) {
-            addImage(e); 
-          });
 
-          function addImage(e){
-            var file = e.target.files[0],
-            imageType = /image.*/;
-          
-            if (!file.type.match(imageType))
-              return;
-        
-            var reader = new FileReader();
-            reader.onload = fileOnload;
-            reader.readAsDataURL(file);
-          }
-        
-          function fileOnload(e) {
-            $('#imgSalida').removeAttr('hidden');
-            var result=e.target.result;
-            $('#imgSalida').attr("src",result);
+            var window_focus;
+            $(window).focus(function() {
+                window_focus = true;
+                $('.file-wrapper').css({'margin-left':'25px'});
+                $('#guardar-foto').attr('hidden','hidden'); 
+                $('#editar').removeAttr('hidden');
+                let foto_anterior ="{{asset('storage/afiliado').'/'.$conductor->foto}}";
+                let foto= $('#imgSalida').attr('src');
+                if(foto!=foto_anterior){
+                    $('#guardar-foto').removeAttr('hidden');
+                    $('.file-wrapper').css({'margin-left':'90px'});
+                    $('#editar').attr('hidden','hidden'); 
+                }
+            }).blur(function() {
+                window_focus = false;
+            });
+
+            $('#txt-foto').change(function(e) {
+                addImage(e); 
+            });
+
+            function addImage(e){
+                var file = e.target.files[0],
+                imageType = /image.*/;
+            
+                if (!file.type.match(imageType))
+                return;
+            
+                var reader = new FileReader();
+                reader.onload = fileOnload;
+                reader.readAsDataURL(file);
             }
-          }
-        );
+        
+            function fileOnload(e) {
+                $('#imgSalida').removeAttr('hidden');
+                var result=e.target.result;
+
+                $('#guardar-foto').removeAttr('hidden'); 
+                $('#editar').attr('hidden','hidden');
+                $('.file-wrapper').css({'margin-left':'90px'});
+
+                $('#imgSalida').attr("src",result);
+            }
+        });
 
         $('body').on('click', '#editar', function(event) {
             $("form").find(':input').each(function(){
@@ -188,6 +175,7 @@
             $('#guardar').removeAttr('hidden'); 
             $('.upload-btn-wrapper').removeAttr('hidden'); 
             $('#editar').attr('hidden','hidden');
+            $('.file-wrapper').attr('hidden','hidden');
         });
 
         $('body').on('click', '.file-wrapper', function(event) {
@@ -196,11 +184,13 @@
             $('#editar').attr('hidden','hidden');
         });
 
-        @if (count($errors)>0)
-            $("form").find(':input').each(function(){
-       		    $(this).removeAttr('readonly');
-            });
-        @endif
+        $(document).ready(function(){
+            if(@json($errors->any())){
+                $('#editar').attr('hidden','hidden');
+                $('.file-wrapper').attr('hidden','hidden');
+                $('#guardar').removeAttr('hidden'); 
+            }
+        });
 
     </script>
 @endsection

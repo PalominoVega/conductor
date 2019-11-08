@@ -7,7 +7,7 @@
             <div class="card-title">Lista de Asignaciones</div>
         </div>
         <div class="table-responsive-general">
-            <table id="asignar" class="table table-card ">
+            <table id="asignar" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Placa</th>
@@ -25,7 +25,7 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="1">...</option>
+                                            <option value="">...</option>
                                             @foreach($conductores as $conductor)
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
@@ -36,8 +36,10 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="1">...</option>
-                                            
+                                            <option value="">...</option>
+                                            @foreach($conductores as $conductor)
+                                                <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
+                                            @endforeach
                                         </select>
                                         <button type="submit" class="btn-primary btn-sm"></button>
                                     </form>
@@ -50,8 +52,10 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="1">...</option>
-                                            
+                                            <option value="">...</option>
+                                            @foreach($conductores as $conductor)
+                                                <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
+                                            @endforeach
                                         </select>
                                         <button type="submit" class="btn-primary btn-sm"></button>
                                     </form>
@@ -86,6 +90,8 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/datatable.js')}}"></script>
+
     <script>
        $('body').on('click', '.asignado', function(event) {
 
@@ -170,6 +176,7 @@
        $('body').on('submit','.form-new',function (e){
             e.preventDefault();
             var conductor_id=$(".conductores option:selected").val();
+            // var conductor_id=$(".conductores option:selected").val();
             var vehiculo_id=this.id;
             
             $.ajax({

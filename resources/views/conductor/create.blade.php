@@ -8,10 +8,6 @@
         <div class="card-avatar mb-2" hidden>
             <img id=imgSalida src="" alt="" >
         </div>
-        {{-- <div class="upload-btn-wrapper mt-2 ">
-            <button class="btn" id="btn-foto">Subir Foto</button>                                
-            <input id="txt-foto" name="file" type="file">
-        </div> --}}
         <span class="create-foto ">
             <span class="button btn btn-primary"><i class="fa fa-file-image-o"></i> Subir</span>
             <input id="txt-foto" name="file" type="file">
@@ -129,34 +125,14 @@
           function fileOnload(e) {
             $('.card-avatar').removeAttr('hidden');
             var result=e.target.result;
+            console.log(result);
+            
             $('#imgSalida').attr("src",result);
             }
           }
         );
         
-        $(document).ready(function(){
-            if(@json($errors->any())){
 
-                // var p=@json($errors->default);
-                
-                 var error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
-                 
-                var errores=error;
-                var arrKeys=Object.keys(errores);
-                
-                for (let index = 0; index < arrKeys.length; index++) {
-                    var indexName=arrKeys[index];
-                    if(index==0){
-                        $(' [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
-                        .append($('<span>').html(errores[indexName]).addClass('error'));
-                    }else{
-                        $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
-                            .append($('<span>').html(errores[indexName]).addClass('error'));
-                    }
-                }
-            }
-        
-        });
-
+ 
     </script>
 @endsection

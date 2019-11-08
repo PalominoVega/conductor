@@ -14,7 +14,7 @@
             <div class="card-title">Lista de Conductores</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Nombres y Apellidos</th>
@@ -28,10 +28,10 @@
                         <tr>
                             <td>{{$conductor->nombre.' '.$conductor->apellido}}</td>
                             <td>{{$conductor->celular}}</td>
-                            <td class="text-center">
+                            <td class="text-center" width="114px">
                                 <a href="{{ route('conductor.show',$conductor->id) }}" class=""><i class="fa fa-file-text text-primary"></i></a>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" width="114px">
                                 <a  class="text-primary estado" id="{{$conductor->id}}" data-nombre="{{$conductor->nombre.' '.$conductor->apellido}}">
                                     <i class="fa fa-dot-circle-o text-primary"></i>
                                 </a>
@@ -46,6 +46,8 @@
 @endsection
 
 @section('script')
+
+    <script src="{{asset('js/datatable.js')}}"></script>
     <script>
        
        $('body').on('click', '.estado', function(event) {
@@ -53,7 +55,9 @@
             // let estado=$(this).children('i').attr('class')=='fa fa-dot-circle-o text-primary' ? 'Desactivar':'Activar';
             let title='¿Está seguro de deshabilitar  a '+conductor+' ?';
             let conductor_id=this.id;
-        
+            let fila=$(this).parents('tr');
+            let fila2=$(this).parents('tr.child').prev();
+            
             swal({
                 title: title,
                 // text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -73,11 +77,12 @@
                             _method:"PUT",
                         },
                         success:function(data){
-                            console.log(data);
                             if(data.status=='OK'){
                                 swal(data.data, {
                                     icon: "success",
                                 });
+                                fila.remove();
+                                fila2.remove();
                             }else{
                                 swal(data.data);
                             }
@@ -93,6 +98,6 @@
             });
        })
 
-
+   
     </script>
 @endsection

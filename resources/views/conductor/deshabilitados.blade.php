@@ -14,7 +14,7 @@
             <div class="card-title">Lista de Conductores Deshabilitados</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Nombres y Apellidos</th>
@@ -46,6 +46,8 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/datatable.js')}}"></script>
+
     <script>
        
        $('body').on('click', '.estado', function(event) {
@@ -53,6 +55,8 @@
             // let estado=$(this).children('i').attr('class')=='fa fa-dot-circle-o text-primary' ? 'Desactivar':'Activar';
             let title='¿Está seguro de habilitar  a '+conductor+' ?';
             let conductor_id=this.id;
+            let fila=$(this).parents('tr');
+            let fila2=$(this).parents('tr.child').prev();
         
             swal({
                 title: title,
@@ -73,11 +77,12 @@
                             _method:"PUT",
                         },
                         success:function(data){
-                            console.log(data);
                             if(data.status=='OK'){
                                 swal(data.data, {
                                     icon: "success",
                                 });
+                                fila2.remove();
+                                fila.remove();
                             }else{
                                 swal(data.data);
                             }

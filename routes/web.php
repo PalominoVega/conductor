@@ -54,7 +54,7 @@ Route::resource('conductor','ConductorController')->middleware('auth')->middlewa
 /**
  * Vehiculo 
  */
-Route::put('vehiculo/{id}','VehiculoController@cambiar_Estado')->name('vehiculo.estado')->middleware('auth');
+Route::put('/estado/vehiculo/{id}','VehiculoController@cambiar_Estado')->name('vehiculo.estado')->middleware('auth');
 Route::resource('vehiculo','VehiculoController')->middleware('auth');/* ->only([
     'index', 'show','store','update'
 ]) */

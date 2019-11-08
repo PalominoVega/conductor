@@ -6,8 +6,8 @@ use App\Model\Vehiculo;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\UserValidation;
 use App\Http\Requests\VehiculoValidation;
+use App\Http\Requests\VehiculoUpdateValidation;
 
 
 class VehiculoController extends Controller
@@ -40,7 +40,7 @@ class VehiculoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehiculoValidation $request)
     {
         DB::beginTransaction();
         try {
@@ -87,6 +87,7 @@ class VehiculoController extends Controller
     public function show($vehiculo_id)
     {
         $vehiculo=Vehiculo::where('id',$vehiculo_id)->first();
+        // dd($vehiculo);
         return view('vehiculo.show', compact('vehiculo'));
     }
 
@@ -108,7 +109,7 @@ class VehiculoController extends Controller
      * @param  \App\Model\Vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $vehiculo_id)
+    public function update(VehiculoUpdateValidation $request, $vehiculo_id)
     {
         DB::beginTransaction();
         try {

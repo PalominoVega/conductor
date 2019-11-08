@@ -5,7 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class VehiculoValidation extends FormRequest
+
+class VehiculoUpdateValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +25,14 @@ class VehiculoValidation extends FormRequest
      */
     public function rules()
     {
+        $parametros=$this->route()->parameters();
+        $vehiculo_id=$parametros['vehiculo'];
         return [
 
             'unidad'=>'max:10|nullable',
             'placa'=>['required','max:10',
-                Rule::unique('vehiculo')->where(function ($query) {
-                    return $query->where('empresa_id',auth()->user()->empresa_id);
+                Rule::unique('vehiculo')->where(function ($query) use($vehiculo_id) {
+                    return $query->where('empresa_id',auth()->user()->empresa_id)->where('id','<>', $vehiculo_id);
                 })
             ],
             'marca'=>'max:20|nullable',

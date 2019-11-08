@@ -14,7 +14,7 @@
             <div class="card-title">Lista de Vehículos</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Unidad</th>
@@ -46,17 +46,18 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/datatable.js')}}"></script>
+
     <script>
        
        $('body').on('click', '.estado', function(event) {
             let vehiculo =$(this).attr('data-nombre');
-            // let estado=$(this).children('i').attr('class')=='fa fa-dot-circle-o text-primary' ? 'Desactivar':'Activar';
             let title='¿Está seguro de eliminar  a '+vehiculo+' ?';
             let vehiculo_id=this.id;
-        
+            let fila=$(this).parents('tr');
+           
             swal({
                 title: title,
-                // text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -73,23 +74,17 @@
                             _method:"PUT",
                         },
                         success:function(data){
-                            console.log(data);
                             if(data.status=='OK'){
                                 swal(data.data, {
                                     icon: "success",
                                 });
+                                fila.remove();
                             }else{
                                 swal(data.data);
                             }
                         }
                     });
-
-                    // swal("Poof! Your imaginary file has been deleted!", {
-                    // icon: "success",
-                    // });
-                } /* else {
-                    swal("Your imaginary file is safe!");
-                } */
+                } 
             });
        })
 

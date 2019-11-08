@@ -3,11 +3,7 @@
     {{-- <div class="registrar text-center">
         <h4 class="">REGISTRO DE V</h4>
     </div> --}}
-    @if (count($errors))
-      @foreach ($errors->all() as $item)
-          <span class="error">{{$item}}</span><br>
-      @endforeach
-    @endif
+
     <div class="card registrar my-5">
         <div class="card-header">
             <div class="card-title">Datos del Vehiculo</div>

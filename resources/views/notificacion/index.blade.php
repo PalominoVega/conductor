@@ -19,8 +19,20 @@
                     @foreach ($docs_soat as $item)
                         <tr>
                             <td>{{$item->placa}}</td>
-                            <td>{{$item->fecha}}</td>
-                            <td>{{$item->dias}}</td>
+                            <td>{{\Carbon\Carbon::parse($item->fecha)->format('d-m-Y') }}</td>
+                            <td>
+                                @if ($item->dias <-1)
+                                    Vencido hace {{ -$item->dias}} días
+                                @elseif($item->dias ==-1)
+                                    Se venció ayer
+                                @elseif($item->dias ==0)
+                                    Se vence hoy
+                                @elseif($item->dias ==1)
+                                    Se vence mañana
+                                @elseif($item->dias >1)
+                                    Por vencer en {{ $item->dias}} días
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -45,8 +57,20 @@
                     @foreach ($doc_revicion_tecnica as $item)
                         <tr>
                             <td>{{$item->placa}}</td>
-                            <td>{{$item->fecha}}</td>
-                            <td>{{$item->dias}}</td>
+                            <td>{{\Carbon\Carbon::parse($item->fecha)->format('d-m-Y') }}</td>
+                            <td>
+                                @if ($item->dias <-1)
+                                    Vencido hace {{ -$item->dias}} días
+                                @elseif($item->dias ==-1)
+                                    Se venció ayer
+                                @elseif($item->dias ==0)
+                                    Se vence hoy
+                                @elseif($item->dias ==1)
+                                    Se vence mañana
+                                @elseif($item->dias >1)
+                                    Por vencer en {{ $item->dias}} días
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -69,12 +93,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($doc_revicion_tecnica as $item)
+                        @foreach ($docs_licencia as $item)
                         <tr>
                             <td>{{$item->nombre.' '.$item->apellido}}</td>
                             <td>{{$item->celular}}</td>
-                            <td>{{$item->fecha}}</td>
-                            <td>{{$item->dias}}</td>
+                            <td>{{\Carbon\Carbon::parse($item->fecha)->format('d-m-Y') }}</td>
+                            <td>
+                                @if ($item->dias <-1)
+                                    Vencido hace {{ -$item->dias}} días
+                                @elseif($item->dias ==-1)
+                                    Se venció ayer
+                                @elseif($item->dias ==0)
+                                    Se vence hoy
+                                @elseif($item->dias ==1)
+                                    Se vence mañana
+                                @elseif($item->dias >1)
+                                    Por vencer en {{ $item->dias}} días
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
