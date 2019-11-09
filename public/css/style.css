@@ -596,6 +596,13 @@ body{background: #f2f2f2}
     padding-bottom: 2px;
 }
 
+.card-table .card-header{
+    position: relative;
+}
+.card-table .card-header .btn{
+    right: 30px;
+}
+
 @media (max-width: 576px){
     .card-btn .col-12 {
         text-align: center !important;
@@ -885,4 +892,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 .page-link:hover {
     color: var(--primary-color);
+}
+
+/* footer */
+footer{
+    background-color: #fff;
+    color: #b21f16;
+    padding: 10px;
+}
+
+
+.dashboard{
+    min-height: calc(100vh - 44px);
 }

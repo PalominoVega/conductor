@@ -8,19 +8,16 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Flota  </title>
-
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
   {{-- Booststrap  --}}
-  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   {{-- datatble --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   {{-- datatable responsible --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
   {{-- css app --}}
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('icon/style.css')}}" rel="stylesheet">
 
   <link rel='shortcut icon' type='image/x-icon' href='{{asset('img/icon.png')}}'/> 
   {{-- agregar esto para enviar el token en ajax --}}
@@ -40,16 +37,16 @@
             <div class="sidebar-body">
                 <ul>
                     <li >
-                        <a href="{{ route('conductor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>Lista de Conductores</a>
+                        <a href="{{ route('conductor.index') }}"><i class="ic_ico" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
                     <li>
-                        <a href="{{ route('vehiculo.index') }}"><i class="fa fa-car" aria-hidden="true"></i>Lista de Vehículos</a>
+                        <a href="{{ route('vehiculo.index') }}"><i class="ic_ico" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
-                        <a href="{{ route('asignador.index') }}"><i class="fa fa-calendar-o" aria-hidden="true"></i>Asignación</a>
+                        <a href="{{ route('asignador.index') }}"><i class="ic_ico" aria-hidden="true"></i>Asignación</a>
                     </li> 
                     <li>
-                        <a href="{{ route('alert.doc') }}"><i class="fa fa-calendar-o" aria-hidden="true"></i>Notificaciones</a>
+                        <a href="{{ route('alert.doc') }}"><i class="ic_ico2_Mesa-de-trabajo-1" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
                     {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
@@ -94,17 +91,16 @@
         </div>
     </div>
     
-    {{-- <footer class="sticky-footer">
+    <footer class="sticky-footer">
       <div class="text-center">
         <small>Copyright © 2019 - CORPORACIÓN VESPRO</small>
       </div>
-    </footer> --}}
+    </footer>
     
-  {{-- booststrap y jquery --}}
-  {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> --}}
-    {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> --}}
+    {{-- booststrap y jquery --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     {{-- datable --}}
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -131,7 +127,7 @@
         $(".sidebar .sidebar-body ul li ").each(function(){
           var a=$(this).children('a').attr('href').replace("http://","").replace("https://","");
           
-          if(URLactual==a){
+          if(URLactual.indexOf(a)==0){
             $(this).addClass('active');
             // var uls=$(this).parents('ul.sidenav-second-level');
             // if(uls.length==1){

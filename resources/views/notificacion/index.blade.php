@@ -7,7 +7,7 @@
             <div class="card-title"> SOAT</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Placa</th>
@@ -45,7 +45,7 @@
             <div class="card-title"> REVISIÓN TÉCNICA</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Placa</th>
@@ -83,7 +83,7 @@
             <div class="card-title">Lista LICENCIA</div>
         </div>
         <div class="table-responsive-general">
-            <table id="hola" class="table table-card ">
+            <table id="hola" class="table table-card dt-responsive nowrap">
                 <thead>
                     <tr>
                         <th>Nombres y Apellidos</th>
@@ -119,4 +119,9 @@
     </div>
     
 </div>
+@endsection
+
+@section('script')
+    <script src="{{asset('js/datatable.js')}}"></script>
+    
 @endsection

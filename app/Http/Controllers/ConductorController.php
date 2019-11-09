@@ -12,6 +12,7 @@ use Peru\Http\ContextClient;
 use Peru\Jne\{Dni, DniParser};
 use Peru\Sunat\{HtmlParser, Ruc, RucParser};
 use Alert;
+use Carbon\Carbon;
 
 class ConductorController extends Controller
 {
@@ -274,6 +275,29 @@ class ConductorController extends Controller
 
             return response()->json($company);
         }
+    }
+
+    public function cumpleanios(Request $request){
+        
+        setlocale(LC_ALL, 'es_ES');
+        
+        $fecha = Carbon::now();
+        $nombre_mes = $fecha->formatLocalized('%B');
+        $mes_actual= $fecha->format('m');
+
+        if($request->has('mes_actual')){
+            $mes_actual=$request->get('mes_actual');
+            $nombre_mes=Carbon::createFromDate(null,$request->get('mes_actual'));
+            $nombre_mes = $nombre_mes->formatLocalized('%B');
+        }
+
+        $conductores=Conductor::select('nombre','apellido','celular', DB::Raw('Day(fecha_nacimiento) dia, TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE()) AS edad ') )->where('empresa_id',auth()->user()->empresa_id)
+                            ->whereMonth('fecha_nacimiento',$mes_actual)
+                            ->orderby('dia','asc')
+                            ->get();
+
+        return view('conductor.cumpleanios', compact('conductores','nombre_mes'));
+        
     }
 
     
