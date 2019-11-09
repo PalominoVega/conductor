@@ -25,7 +25,7 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="">...</option>
+                                            <option value="0">...</option>
                                             @foreach($conductores as $conductor)
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
@@ -36,7 +36,7 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="">...</option>
+                                            <option value="0">...</option>
                                             @foreach($conductores as $conductor)
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
@@ -52,7 +52,7 @@
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
                                         <select  class="form-control-sm conductores" style="" name="conductores" id="conductores">
-                                            <option value="">...</option>
+                                            <option value="0">...</option>
                                             @foreach($conductores as $conductor)
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
@@ -71,15 +71,6 @@
                                     <i class="fa fa-minus-circle text-primary asignado" id="{{$vehiculo->conductor[1]->id}}"></i>
                                 </td>  
                             @endif
-
-                            {{-- <td class="text-center">
-                                <a  class=""><i class="fa fa-file-text text-primary"></i></a>
-                            </td> --}}
-                            {{-- <td class="text-center">
-                                <a  class="text-primary estado">
-                                        <i class="fa fa-dot-circle-o text-primary"></i>
-                                </a>
-                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -106,60 +97,20 @@
                 },
                 success:function(data){
                     if(data.status=='OK'){
-                        swal(data.data, {
-                            icon: "success",
-                        });
+                        // swal(data.data, {
+                        //     icon: "success",
+                        // });
+                        // location.reload();
+
+                        swal({ title: data.data , icon: "success",timer:3000 });
+                        setTimeout('location.reload();',2000);
+
                     }else{
                         swal(data.data);
                     }
                 }
             });
        });
-
-       $('body').on('click', '.estado', function(event) {
-            let vehiculo =$(this).attr('data-nombre');
-            // let estado=$(this).children('i').attr('class')=='fa fa-dot-circle-o text-primary' ? 'Desactivar':'Activar';
-            let title='¿Está seguro de eliminar  a '+vehiculo+' ?';
-            let vehiculo_id=this.id;
-        
-            swal({
-                title: title,
-                // text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                if (willDelete) {
-                    var url="{{route('vehiculo.estado','_id_')}}";
-                    var url_update= url.replace('_id_',vehiculo_id);
-                    $.ajax({
-                        url:url_update, 
-                        method:"post",
-                        data:{
-                            _token:csrf_token,
-                            _method:"PUT",
-                        },
-                        success:function(data){
-                            console.log(data);
-                            if(data.status=='OK'){
-                                swal(data.data, {
-                                    icon: "success",
-                                });
-                            }else{
-                                swal(data.data);
-                            }
-                        }
-                    });
-
-                    // swal("Poof! Your imaginary file has been deleted!", {
-                    // icon: "success",
-                    // });
-                } /* else {
-                    swal("Your imaginary file is safe!");
-                } */
-            });
-       })
 
        $('body').on('click', 'select', function(event) {
             $.ajax({
@@ -175,8 +126,7 @@
 
        $('body').on('submit','.form-new',function (e){
             e.preventDefault();
-            var conductor_id=$(".conductores option:selected").val();
-            // var conductor_id=$(".conductores option:selected").val();
+            var conductor_id=$(this).find('option:selected').val();
             var vehiculo_id=this.id;
             
             $.ajax({
@@ -188,8 +138,13 @@
                     vehiculo_id:vehiculo_id,
                 },
                 success: function (data) {
-                    console.log(data);
-                    swal({ title: "Conductor Asignado" , icon: "success",timer:2000 });
+                    if(data.status=='OK'){
+                        swal({ title: "Conductor Asignado" , icon: "success",timer:3000 });
+                        setTimeout('location.reload();',2000);
+                        
+                    }else{
+                        swal(data.data);
+                    }
                 }
             }); 
         });

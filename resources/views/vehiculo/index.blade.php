@@ -55,6 +55,8 @@
             let title='¿Está seguro de eliminar  a '+vehiculo+' ?';
             let vehiculo_id=this.id;
             let fila=$(this).parents('tr');
+            let fila2=$(this).parents('tr.child').prev();
+           
            
             swal({
                 title: title,
@@ -79,6 +81,7 @@
                                     icon: "success",
                                 });
                                 fila.remove();
+                                fila2.remove();
                             }else{
                                 swal(data.data);
                             }

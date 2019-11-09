@@ -57,10 +57,9 @@
             let conductor_id=this.id;
             let fila=$(this).parents('tr');
             let fila2=$(this).parents('tr.child').prev();
-            
+
             swal({
                 title: title,
-                // text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

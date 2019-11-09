@@ -59,8 +59,14 @@ class AsignadorController extends Controller
 
     public function storeVehiculo(Request $request )
     {
-        echo json_encode($request->all());
         DB::beginTransaction();
+        if($request->conductor_id==0){
+            return response()->json([
+                "status"    =>  "DANGER",
+                "data"      =>  "Seleccione un conductor"
+            ]);
+        }
+
 
         try {
             $conductor= Conductor::where('id',$request->conductor_id)->first();
