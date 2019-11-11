@@ -45,6 +45,7 @@ Route::get('asignador','AsignadorController@index')->name('asignador.index')->mi
 /**
  * Conductor
  */
+Route::get('conductor/contrasenia','ConductorController@cambiar_contrasenia')->name('conductor.cambiar_contrasenia')->middleware('auth');
 Route::get('conductor/cumpleanios','ConductorController@cumpleanios')->name('conductor.cumpleanios')->middleware('auth');
 Route::put('foto/conductor/{id}','ConductorController@updateFoto')->name('conductor.update.foto')->middleware('auth');
 Route::put('estado/conductor/{id}','ConductorController@cambiar_Estado')->name('conductor.estado')->middleware('auth');

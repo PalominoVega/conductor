@@ -4,7 +4,7 @@
     <div class="card-table my-3">
         <div class="card-header">
             <div class="card-title">Lista de cumpleaños de {{$nombre_mes}}</div>
-            <button class="btn btn-primary card-title" data-toggle="modal" data-target="#fecha" data-placement="top" title="Busqueda por fecha"><span><i class="fa fa-calendar-o"></i></button>
+            <button class="btn btn-primary card-title" data-toggle="modal" data-target="#fecha" data-placement="top" title="Busqueda por fecha"><span><i class="icon-calendario2"></i></button>
         </div>
         <div class="table-responsive-general">
             <table id="hola" class="table table-card dt-responsive nowrap">

@@ -9,7 +9,7 @@
             <img id=imgSalida src="" alt="" >
         </div>
         <span class="create-foto ">
-            <span class="button btn btn-primary"><i class="fa fa-file-image-o"></i> Subir</span>
+            <span class="button btn btn-primary"><i class="icon-image2"></i> Subir</span>
             <input id="txt-foto" name="file" type="file">
         </span>
     </div>
@@ -133,6 +133,37 @@
         );
         
 
+        $("#documento").keyup(function(){
+
+            var documento=$('#documento').val();
+
+            if(documento.length==8 || documento.length==11){
+                $.ajax({
+                    url:"", 
+                    method:"get",
+                    data:{
+                        documento:documento, 
+                    },
+
+                    success:function(data){
+                         var resultado=data;
+                         
+                        if(resultado.length!=undefined){
+                            $('#nombre').removeAttr('readonly');
+                        }else{
+                            if(documento.length==8){
+                                $('#nombre').val(resultado.nombres+' '+resultado.apellidoPaterno+' '+resultado.apellidoMaterno);
+                            }else{
+                                $('#nombre').val(resultado.razonSocial);
+                            }
+                        }
+                    } 
+                })
+            }else{
+                $('#nombre').val('').attr('readonly','readonly');
+            }
+        })
+        
  
     </script>
 @endsection

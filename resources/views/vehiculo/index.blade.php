@@ -19,8 +19,8 @@
                     <tr>
                         <th>Unidad</th>
                         <th>Placa</th>
-                        <th>Detalles</th>
-                        <th>Eliminar</th>
+                        <th class="text-center">Detalles</th>
+                        <th class="text-center">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,11 +29,11 @@
                             <td>{{$vehiculo->unidad}}</td>
                             <td>{{$vehiculo->placa}}</td>
                             <td class="text-center">
-                                <a href="{{ route('vehiculo.show',$vehiculo->id) }}" class=""><i class="fa fa-file-text text-primary"></i></a>
+                                <a href="{{ route('vehiculo.show',$vehiculo->id) }}" class=""><i class="icon-detalles text-primary"></i></a>
                             </td>
                             <td class="text-center">
                                 <a  class="text-primary estado" id="{{$vehiculo->id}}" data-nombre="{{$vehiculo->placa}}">
-                                    <i class="fa fa-trash text-primary"></i>
+                                    <i class="icon-eliminar text-primary"></i>
                                 </a>
                             </td>
                         </tr>

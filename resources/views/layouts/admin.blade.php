@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Flota  </title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
   {{-- Booststrap  --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   {{-- datatble --}}
@@ -37,16 +37,16 @@
             <div class="sidebar-body">
                 <ul>
                     <li >
-                        <a href="{{ route('conductor.index') }}"><i class="ic_ico" aria-hidden="true"></i>Lista de Conductores</a>
+                        <a href="{{ route('conductor.index') }}"><i class="icon-user" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
                     <li>
-                        <a href="{{ route('vehiculo.index') }}"><i class="ic_ico" aria-hidden="true"></i>Lista de Vehículos</a>
+                        <a href="{{ route('vehiculo.index') }}"><i class="icon-vehiculo" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
-                        <a href="{{ route('asignador.index') }}"><i class="ic_ico" aria-hidden="true"></i>Asignación</a>
+                        <a href="{{ route('asignador.index') }}"><i class="icon-asignacion" aria-hidden="true"></i>Asignación</a>
                     </li> 
                     <li>
-                        <a href="{{ route('alert.doc') }}"><i class="ic_ico2_Mesa-de-trabajo-1" aria-hidden="true"></i>Notificaciones</a>
+                        <a href="{{ route('alert.doc') }}"><i class="icon-notificaciones" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
                     {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
@@ -60,19 +60,19 @@
                 <div class="navbar-content">
                     {{-- <i class="fa fa-bell" aria-hidden="true"></i> DIEGO FRANCISCO MENDOZA FRIAS <i class="fa fa-user" aria-hidden="true"></i> --}}
                     <ul>
-                        {{-- <li class="dropdown">
-                            <a href="http://example.com" >
-                                <i class="fa fa-user"></i>
+                        <li class="dropdown">
+                            <a href="{{ route('conductor.cumpleanios') }}" >
+                                <i class="icon-cumplenio"></i>
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="dropdown">
                             <a  href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 palomino vega 
-                                <i class=" fa fa-user ml-1"></i>
+                                <i class=" icon-user ml-1"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                 <a class="dropdown-item" onclick="salir()">Cerrar Sesión</a>
-                                {{-- <a class="dropdown-item" >Cambiar contraseña</a> --}}
+                                <a href="{{ route('conductor.cambiar_contrasenia') }}" class="dropdown-item" >Cambiar contraseña</a>
                             </div>
                         </li>
                     </ul>

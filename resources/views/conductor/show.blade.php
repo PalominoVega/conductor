@@ -14,7 +14,7 @@
                     <form action="{{ route('conductor.update.foto',$conductor->id) }}" method="post" enctype="multipart/form-data" class="mb-2">
                         @csrf {{ method_field('PUT') }}
                         <span class="file-wrapper">
-                            <span class="button"><i class="fa fa-plus text-white" aria-hidden="true"></i></span>
+                            <span class="button"><i class="icon-add text-white" aria-hidden="true"></i></span>
                             <input id="txt-foto" name="file" type="file"readonly>
                         </span>
                         <button type="submit" class="btn btn-primary mt-2" id="guardar-foto" hidden>Guardar Foto</button>
@@ -24,9 +24,9 @@
                             <p class="text-estado">Deshabilitado</p>
                         @endif
                         <p>
-                        <i class="fa fa-user" aria-hidden="true"></i> {{$conductor->nombre.' '.$conductor->apellidos}}<br>
-                            <i class="fa fa-id-card" aria-hidden="true"></i>{{$conductor->dni}} <br>
-                            <i class="fa fa-phone" aria-hidden="true"></i>{{$conductor->celular}}
+                        <i class="icon-user" aria-hidden="true"></i> {{$conductor->nombre.' '.$conductor->apellidos}}<br>
+                            <i class="icon-telefono" aria-hidden="true"></i>{{$conductor->dni}} <br>
+                            <i class="icon-telefono" aria-hidden="true"></i>{{$conductor->celular}}
                         </p>
                     </div>
                 </div>

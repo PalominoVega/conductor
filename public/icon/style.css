@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?8t18im');
-  src:  url('fonts/icomoon.eot?8t18im#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?8t18im') format('truetype'),
-    url('fonts/icomoon.woff?8t18im') format('woff'),
-    url('fonts/icomoon.svg?8t18im#icomoon') format('svg');
+  font-family: 'vespro';
+  src:  url('fonts/vespro.eot?rpqa84');
+  src:  url('fonts/vespro.eot?rpqa84#iefix') format('embedded-opentype'),
+    url('fonts/vespro.ttf?rpqa84') format('truetype'),
+    url('fonts/vespro.woff?rpqa84') format('woff'),
+    url('fonts/vespro.svg?rpqa84#vespro') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'vespro' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,9 +25,78 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ic_ico2_Mesa-de-trabajo-1:before {
+.icon-add:before {
+  content: "\f067";
+}
+.icon-check:before {
+  content: "\f00c";
+}
+.icon-borrar:before {
+  content: "\f00d";
+}
+.icon-image2:before {
+  content: "\f03e";
+}
+.icon-add-circle:before {
+  content: "\f055";
+}
+.icon-borrar-circle:before {
+  content: "\f057";
+}
+.icon-ban:before {
+  content: "\f05e";
+}
+.icon-calendario2:before {
+  content: "\f073";
+}
+.icon-abajo:before {
+  content: "\f0d7";
+}
+.icon-arriba:before {
+  content: "\f0d8";
+}
+.icon-subir-file:before {
+  content: "\f0ee";
+}
+.icon-pdf:before {
+  content: "\f1c1";
+}
+.icon-excel:before {
+  content: "\f1c3";
+}
+.icon-image:before {
+  content: "\f1c5";
+}
+.icon-asignacion:before {
   content: "\e900";
 }
-.ic_ico:before {
+.icon-calendario:before {
   content: "\e901";
+}
+.icon-contrania:before {
+  content: "\e902";
+}
+.icon-cumplenio:before {
+  content: "\e903";
+}
+.icon-detalles:before {
+  content: "\e904";
+}
+.icon-eliminar:before {
+  content: "\e905";
+}
+.icon-estado:before {
+  content: "\e906";
+}
+.icon-notificaciones:before {
+  content: "\e907";
+}
+.icon-telefono:before {
+  content: "\e908";
+}
+.icon-user:before {
+  content: "\e909";
+}
+.icon-vehiculo:before {
+  content: "\e90a";
 }

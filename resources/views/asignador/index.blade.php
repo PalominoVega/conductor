@@ -47,7 +47,7 @@
                             @elseif(count($vehiculo->conductor)==1)
                                 <td>
                                     {{$vehiculo->conductor[0]->nombre.' '.$vehiculo->conductor[0]->apellido}} 
-                                    <i class="fa fa-minus-circle text-primary asignado" id="{{$vehiculo->conductor[0]->id}}"></i>
+                                    <i class="icon-borrar-circle text-primary asignado" id="{{$vehiculo->conductor[0]->id}}"></i>
                                 </td>
                                 <td>
                                     <form class="form-new" id="{{$vehiculo->id}}">
@@ -64,11 +64,11 @@
                             @else
                                 <td>
                                     {{$vehiculo->conductor[0]->nombre.' '.$vehiculo->conductor[0]->apellido}} 
-                                    <i class="fa fa-minus-circle text-primary asignado" id="{{$vehiculo->conductor[0]->id}}" ></i>
+                                    <i class="icon-borrar text-primary asignado" id="{{$vehiculo->conductor[0]->id}}" ></i>
                                 </td>
                                 <td>
                                     {{$vehiculo->conductor[1]->nombre.' '.$vehiculo->conductor[1]->apellido}} 
-                                    <i class="fa fa-minus-circle text-primary asignado" id="{{$vehiculo->conductor[1]->id}}"></i>
+                                    <i class="icon-borrar text-primary asignado" id="{{$vehiculo->conductor[1]->id}}"></i>
                                 </td>  
                             @endif
                         </tr>

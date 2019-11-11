@@ -29,11 +29,11 @@
                             <td>{{$conductor->nombre.' '.$conductor->apellido}}</td>
                             <td>{{$conductor->celular}}</td>
                             <td class="text-center" width="114px">
-                                <a href="{{ route('conductor.show',$conductor->id) }}" class=""><i class="fa fa-file-text text-primary"></i></a>
+                                <a href="{{ route('conductor.show',$conductor->id) }}" class=""><i class="icon-detalles text-primary"></i></a>
                             </td>
                             <td class="text-center" width="114px">
                                 <a  class="text-primary estado" id="{{$conductor->id}}" data-nombre="{{$conductor->nombre.' '.$conductor->apellido}}">
-                                    <i class="fa fa-dot-circle-o text-primary"></i>
+                                    <i class="icon-estado text-primary"></i>
                                 </a>
                             </td>
                         </tr>
