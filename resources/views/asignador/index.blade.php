@@ -30,7 +30,7 @@
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
                                         </select>
-                                        <button type="submit" class="btn-primary btn-sm"></button>
+                                        <button type="submit" class="btn-primary btn-sm"><i class="icon-check"></i></button>
                                     </form>
                                 </td>
                                 <td>
@@ -41,7 +41,7 @@
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
                                         </select>
-                                        <button type="submit" class="btn-primary btn-sm"></button>
+                                        <button type="submit" class="btn-primary btn-sm"><i class="icon-check"></i></button>
                                     </form>
                                 </td>
                             @elseif(count($vehiculo->conductor)==1)
@@ -57,7 +57,7 @@
                                                 <option value="{{$conductor->id}}">{{$conductor->nombre.' '.$conductor->apellido}}</option>
                                             @endforeach
                                         </select>
-                                        <button type="submit" class="btn-primary btn-sm"></button>
+                                        <button type="submit" class="btn-primary btn-sm"><i class="icon-check"></i></button>
                                     </form>
 
                                 </td>

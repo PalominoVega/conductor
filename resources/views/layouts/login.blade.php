@@ -12,9 +12,11 @@
   {{-- Booststrap  --}}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
   {{-- css app --}}
   <link href="{{asset('css/login.css')}}" rel="stylesheet">
+  <link href="{{asset('icon/style.css')}}" rel="stylesheet">
+
 
   <link rel='shortcut icon' type='image/x-icon' href='{{asset('img/icon.png')}}'/> 
   {{-- agregar esto para enviar el token en ajax --}}
@@ -56,35 +58,33 @@
   @yield('script') 
   @include('sweet::alert')
 
-  <script>
-
-    
-    
-    /**
-    * Validaciones
-    */
-    function limpiarErrores(){$('.has-error strong').remove();$('div.form-group.has-error').removeClass('has-error');$('.input-error').removeClass('input-error')}
-    function mostrarErrores(form, error){
-        var errores=error.responseJSON.errors;
-        limpiarErrores();
-        var arrKeys=Object.keys(errores);
-        for (let index = 0; index < arrKeys.length; index++) {
-            var indexName=arrKeys[index];
-            if(index==0){
-                $('#'+form+' [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
-                .append($('<strong>').html(errores[indexName]).addClass('error'));
-            }else{
-                $('#'+form+' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
-                    .append($('<strong>').html(errores[indexName]).addClass('error'));
+    <script>
+        $(document).ready(function(){
+          
+          @if (count($errors))
+            error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
+          
+            var errores=error;
+            var arrKeys=Object.keys(errores);
+            console.log(arrKeys);
+            
+            for (let index = 0; index < arrKeys.length; index++) {
+                var indexName=arrKeys[index];
+                if(index==0){
+                    $('form [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
+                    .append($('<span>').html(errores[indexName]).addClass('error'));
+                }else{
+                    $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
+                        .append($('<span>').html(errores[indexName]).addClass('error'));
+                }
             }
-        }
-    }
-    function limpiarCampos(form){
-        $('#'+form+' input[name!=_token][name!=_method][type!=radio]').val("");
-        $('#'+form+' select').val("")
-    }
-    
-  </script>
-  
+
+            $("form").find(':input').each(function(){
+                $(this).removeAttr('readonly');
+            });
+                
+          @endif
+        });
+    </script>
 </body>
 </html>

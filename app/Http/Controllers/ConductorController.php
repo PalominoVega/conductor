@@ -250,11 +250,6 @@ class ConductorController extends Controller
         return view('conductor.deshabilitados', compact('conductores'));
     }
     
-    public function cambiar_contrasenia()
-    {
-        return view('password.cambiar-contrasenia');
-    }
-
     public function buscar(Request $request){
         if (strlen($request->get('documento'))==8) {
             $dni = $request->documento;
@@ -304,6 +299,7 @@ class ConductorController extends Controller
         return view('conductor.cumpleanios', compact('conductores','nombre_mes'));
         
     }
+    
     
     
 }

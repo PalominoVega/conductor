@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'vespro';
-  src:  url('fonts/vespro.eot?rpqa84');
-  src:  url('fonts/vespro.eot?rpqa84#iefix') format('embedded-opentype'),
-    url('fonts/vespro.ttf?rpqa84') format('truetype'),
-    url('fonts/vespro.woff?rpqa84') format('woff'),
-    url('fonts/vespro.svg?rpqa84#vespro') format('svg');
+  src:  url('fonts/vespro.eot?4biu24');
+  src:  url('fonts/vespro.eot?4biu24#iefix') format('embedded-opentype'),
+    url('fonts/vespro.ttf?4biu24') format('truetype'),
+    url('fonts/vespro.woff?4biu24') format('woff'),
+    url('fonts/vespro.svg?4biu24#vespro') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-user-group:before {
+  content: "\e90b";
+}
 .icon-add:before {
   content: "\f067";
 }
@@ -49,6 +52,12 @@ i {
 .icon-calendario2:before {
   content: "\f073";
 }
+.icon-group:before {
+  content: "\f0c0";
+}
+.icon-users:before {
+  content: "\f0c0";
+}
 .icon-abajo:before {
   content: "\f0d7";
 }
@@ -58,6 +67,12 @@ i {
 .icon-subir-file:before {
   content: "\f0ee";
 }
+.icon-automobile:before {
+  content: "\f1b9";
+}
+.icon-car:before {
+  content: "\f1b9";
+}
 .icon-pdf:before {
   content: "\f1c1";
 }
@@ -66,6 +81,21 @@ i {
 }
 .icon-image:before {
   content: "\f1c5";
+}
+.icon-at:before {
+  content: "\f1fa";
+}
+.icon-birthday-cake:before {
+  content: "\f1fd";
+}
+.icon-id-badge:before {
+  content: "\f2c1";
+}
+.icon-drivers-license:before {
+  content: "\f2c2";
+}
+.icon-id-card:before {
+  content: "\f2c2";
 }
 .icon-asignacion:before {
   content: "\e900";

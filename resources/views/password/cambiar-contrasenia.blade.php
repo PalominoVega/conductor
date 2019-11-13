@@ -1,41 +1,45 @@
 @extends('layouts.admin')
-
 @section('content')
-<div class=" div-login" >
-    @if (count($errors))
-      {{$errors}}
-      @foreach ($errors->all() as $item)
-          <span class="error">{{$item}}</span><br>
-      @endforeach
-    @endif
-  <div class="login text-center">
-      <hr>
-      <div class="title">INICIAR SESIÓN</div>
-  </div>
-  <form  action="{{ route('postlogin') }}" method="post" class="card">
-      @csrf
-      <div class="card-body">
-          <div class="form-group">
-            <i class="fa fa-user" aria-hidden="true"></i><input type="text" name="email" id="email" class="form-control " >
-          </div>
-          <div class="form-group">
-            <i class="fa fa-at" aria-hidden="true"></i><input type="password" name="password" id="password" class="form-control " >
-          </div>
-          <div class="form-group text-center">
-              <button class="btn btn-primary mb-3 mt-3 form-control">INGRESAR</button>
-              <a href="#">Olvidé mi contraseña</a>
+ 
+<form action="{{ route('store_cambiar_contrasenia') }}" method="post" enctype="multipart/form-data"   >
+    @csrf {{ method_field('PUT') }}
+    
+    <div class="card registrar my-5  container-contrasenia">
+        <div class="card-header">
+            <div class="card-title">Cambiar Contraseña</div>
+        </div>
 
-          </div>
-      </div>
-  </form>
-</div> 
+        <div class="card-body ">
+            <div class="row">
+                <div class="col-12 ">
+                    <div class="form-group">
+                        <label for="">Contraseña Actual</label>
+                        <input type="password" name="password" id="password" class="form-control form-control-sm" value="{{old('password')}}"  >
+                    </div>
+                </div>
+                <div class="col-12 ">
+                    <div class="form-group">
+                        <label for="">Nueva Contraseña</label>
+                        <input type="password" name="newpassword" id="newpassword" class="form-control form-control-sm" value="{{old('newpassword')}}" >
+                    </div>
+                </div>
+                <div class="col-12 ">
+                    <div class="form-group">
+                        <label for="">Repetir Contraseña</label>
+                        <input type="password" name="repassword" id="repassword" class="form-control form-control-sm" value="{{old('repassword')}}" >
+                    </div>
+                </div>
+                
+            </div>    
+        </div>
+        <div class="card-footer text-center" >
+            <button class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>
 @endsection
 
+
 @section('script')
-    <script>
-
-      
-      
-
-    </script>
+    
 @endsection

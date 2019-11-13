@@ -14,7 +14,7 @@ class NotificacionesController extends Controller
     public function alerta_docs(Request $request){
         $fechaprevencion=Carbon::now()->format('Y-m-d');
         $fechaprevencion2=Carbon::now()->addDays(7)->format('Y-m-d');
-        $fechaprevencion3=Carbon::now()->addDays(45)->format('Y-m-d');
+        $fechaprevencion3=Carbon::now()->addDays(1)->format('Y-m-d');
         $docs_soat=Vehiculo::select('id','placa','fecha_soat as fecha','unidad', DB::Raw('DATEDIFF(fecha_soat,CURDATE()) as dias'))
                         ->where(function ($query) use ($fechaprevencion, $fechaprevencion2) {
                             return $query->whereBetween('fecha_soat',[$fechaprevencion,$fechaprevencion2])

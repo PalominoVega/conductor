@@ -6,10 +6,11 @@
       <hr>
       <div class="title">RECUPERAR CONTRASEÑA</div>
   </div>
-  <form action="" method="get" class="card">
+  <form action="{{ route('recuperar.password.email') }}" method="post" class="card">
+    @csrf
       <div class="card-body">
           <div class="form-group">
-            <i class="fa fa-at" aria-hidden="true"></i><input type="text" name="dni" id="dni" class="form-control " >
+            <i class="icon-at" aria-hidden="true"></i><input type="email" name="email" id="email" class="form-control " placeholder="correo electronico" >
           </div>
           <div class="form-group text-center">
               <button class="btn btn-primary mb-3 mt-3 form-control">ENVIAR</button>

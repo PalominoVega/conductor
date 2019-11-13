@@ -61,18 +61,18 @@
                     {{-- <i class="fa fa-bell" aria-hidden="true"></i> DIEGO FRANCISCO MENDOZA FRIAS <i class="fa fa-user" aria-hidden="true"></i> --}}
                     <ul>
                         <li class="dropdown">
-                            <a href="{{ route('conductor.cumpleanios') }}" >
-                                <i class="icon-cumplenio"></i>
+                            <a href="{{ route('conductor.cumpleanios') }}" class="cumpleanio">
+                                <i class="icon-birthday-cake"></i>
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a  href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a  href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="user">
                                 palomino vega 
-                                <i class=" icon-user ml-1"></i>
+                                <i class=" icon-user ml-2"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                 <a class="dropdown-item" onclick="salir()">Cerrar Sesión</a>
-                                <a href="{{ route('conductor.cambiar_contrasenia') }}" class="dropdown-item" >Cambiar contraseña</a>
+                                <a href="{{ route('cambiar_contrasenia') }}" class="dropdown-item" >Cambiar contraseña</a>
                             </div>
                         </li>
                     </ul>
@@ -81,13 +81,13 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
-             <div class="img-panel-superior">
+             {{-- <div class="img-panel-superior">
                 <img src="{{asset('img/lineas-superior.png')}}" alt="">
-             </div>
+             </div> --}}
              @yield('content') 
-             <div class="img-panel-inferior">
+             {{-- <div class="img-panel-inferior">
                 <img src="{{asset('img/lineas-inferior.png')}}" alt="">
-             </div>
+             </div> --}}
         </div>
     </div>
     
@@ -138,7 +138,49 @@
     });
 
   </script>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase.js"></script>
   <script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyC5EcTYyELdaKrBATYDCcoVXz7E1w01AH4",
+        authDomain: "tecnologia-vespro.firebaseapp.com",
+        databaseURL: "https://tecnologia-vespro.firebaseio.com",
+        projectId: "tecnologia-vespro",
+        storageBucket: "",
+        messagingSenderId: "185741590134",
+        appId: "1:185741590134:web:c08241ac25b6a566"
+      };
+      firebase.initializeApp(firebaseConfig);
+      var nombre_topic='flota-'+"{{ Auth::user()->empresa_id}}";
+  
+      navigator.serviceWorker.register("{{asset('sw.js')}}").then((registration) => {
+        var messaging;
+        messaging=firebase.messaging();
+        messaging.useServiceWorker(registration);
+        messaging.requestPermission().then(function () {
+            return messaging.getToken();
+        }).then(function (token) {
+            if(window.localStorage.getItem('push')===null){
+                window.localStorage.setItem('push',token);
+                $.ajax({        
+                    type : 'POST',
+                    url : "https://iid.googleapis.com/iid/v1:batchAdd",
+                    headers : {Authorization : 'key=AIzaSyCRRFu54sUpJaRpnWiR13Z5Zce_AzCPPhg'},
+                    contentType : 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify({"to": "/topics/"+nombre_topic, "registration_tokens": [token]}),
+                    success : function(response) {
+                        console.log("Push Registrado en TOPIC");
+                    }
+                });
+            }
+        });
+      });
+
+
+
+
     function cerrar(){
       $('.sidebar.open').removeClass('open');
       $('.show-sidebar.open').removeClass('open');
@@ -150,16 +192,53 @@
     }
 
     function salir() {
-      $.ajax({
-          url: "{{route('cerrar')}}",
-          type: 'GET',
-          data: {
-          },
-          success: function(data){
-              var url =  "{{route('login')}}"; 
-              $(location).attr('href',url);
-          }
-      });
+
+      if(window.localStorage.getItem('push')!==null){
+            var token=window.localStorage.getItem('push');
+            window.localStorage.removeItem('push');
+            $.ajax({        
+                type : 'POST',
+                url : "https://iid.googleapis.com/iid/v1:batchRemove",
+                headers : {Authorization : 'key=AIzaSyCRRFu54sUpJaRpnWiR13Z5Zce_AzCPPhg'},
+                contentType : 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({"to": "/topics/"+nombre_topic, "registration_tokens": [token]}),
+                success : function(response) {
+                  window.localStorage.removeItem('push');
+                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for(let registration of registrations) {
+                  registration.unregister()
+                  } })
+                  Notification.permissions = 'default';
+                  
+                  $.ajax({
+                      url: "{{route('cerrar')}}",
+                      type: 'GET',
+                      data: {
+                      },
+                      success: function(data){
+                          var url =  "{{route('login')}}"; 
+                          $(location).attr('href',url);
+                      }
+                  });
+                }
+            });
+        }else{
+          $.ajax({
+              url: "{{route('cerrar')}}",
+              type: 'GET',
+              data: {
+              },
+              success: function(data){
+                  var url =  "{{route('login')}}"; 
+                  $(location).attr('href',url);
+              }
+          });
+        }
+
+
+
+      
     }
 
     setTimeout(() => {
@@ -171,32 +250,54 @@
       });  
     }, 1000);
 
-    // $(document).ready(function(){
-    //   if(@json($errors->any())){
-
-    //     // var p=@json($errors->default);
+    $(document).ready(function(){
+      
+      @if (count($errors))
+        error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
+      
+        var errores=error;
+        var arrKeys=Object.keys(errores);
         
-    //       var error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
+        for (let index = 0; index < arrKeys.length; index++) {
+            var indexName=arrKeys[index];
+            if(index==0){
+                $('form [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
+                .append($('<span>').html(errores[indexName]).addClass('error'));
+            }else{
+                $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
+                    .append($('<span>').html(errores[indexName]).addClass('error'));
+            }
+        }
+
+        $("form").find(':input').each(function(){
+            $(this).removeAttr('readonly');
+        });
+            
+      @endif
+
+
+      // if(@json($errors->any())){
+      //   error = <?php echo str_replace(["[","]"], "", json_encode($errors->default)); ?>;
           
-    //     var errores=error;
-    //     var arrKeys=Object.keys(errores);
+      //   var errores=error;
+      //   var arrKeys=Object.keys(errores);
         
-    //     for (let index = 0; index < arrKeys.length; index++) {
-    //         var indexName=arrKeys[index];
-    //         if(index==0){
-    //             $('form [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
-    //             .append($('<span>').html(errores[indexName]).addClass('error'));
-    //         }else{
-    //             $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
-    //                 .append($('<span>').html(errores[indexName]).addClass('error'));
-    //         }
-    //     }
+      //   for (let index = 0; index < arrKeys.length; index++) {
+      //       var indexName=arrKeys[index];
+      //       if(index==0){
+      //           $('form [name='+indexName+']').addClass('input-error').focus().parents('div.form-group').addClass('has-error')
+      //           .append($('<span>').html(errores[indexName]).addClass('error'));
+      //       }else{
+      //           $(' [name='+indexName+']').addClass('input-error').parents('div.form-group').addClass('has-error')
+      //               .append($('<span>').html(errores[indexName]).addClass('error'));
+      //       }
+      //   }
 
-    //     $("form").find(':input').each(function(){
-    //         $(this).removeAttr('readonly');
-    //     });
-    //   }
-    // });
+      //   $("form").find(':input').each(function(){
+      //       $(this).removeAttr('readonly');
+      //   });
+      // }
+    });
 
   </script>
 </body>

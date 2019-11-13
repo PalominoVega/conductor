@@ -3,7 +3,7 @@ $(document).ready(function() {
         "bInfo": false,
         "ordering": false,
         dom: 'rtip',
-        pageLength: 12,
+        pageLength: 5,
 
         language: {
             processing:     "Procesando...",

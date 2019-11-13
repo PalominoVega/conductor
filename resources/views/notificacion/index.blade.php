@@ -122,6 +122,5 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/datatable.js')}}"></script>
-    
+    <script src="{{asset('js/datatable-noticacion.js')}}"></script>
 @endsection

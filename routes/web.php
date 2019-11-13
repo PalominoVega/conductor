@@ -45,7 +45,6 @@ Route::get('asignador','AsignadorController@index')->name('asignador.index')->mi
 /**
  * Conductor
  */
-Route::get('conductor/contrasenia','ConductorController@cambiar_contrasenia')->name('conductor.cambiar_contrasenia')->middleware('auth');
 Route::get('conductor/cumpleanios','ConductorController@cumpleanios')->name('conductor.cumpleanios')->middleware('auth');
 Route::put('foto/conductor/{id}','ConductorController@updateFoto')->name('conductor.update.foto')->middleware('auth');
 Route::put('estado/conductor/{id}','ConductorController@cambiar_Estado')->name('conductor.estado')->middleware('auth');
@@ -66,4 +65,15 @@ Route::resource('vehiculo','VehiculoController')->middleware('auth');/* ->only([
  */
 Route::get('notificacion','NotificacionesController@alerta_docs')->name('alert.doc')->middleware('auth');
 
+/**
+ * usuario
+ */
+Route::get('usuario/contrasenia','UserController@view_cambiar_contrasenia')->name('cambiar_contrasenia')->middleware('auth');
+Route::put('usuario/contrasenia','UserController@cambiar_contrasenia')->name('store_cambiar_contrasenia')->middleware('auth');
+Route::get('/password', 'UserController@password')->name('recuperar.password');
+Route::post('/emial', 'UserController@email_contrasenia')->name('recuperar.password.email');
+Route::get('/password/nueva/{token}', function () {
+    return view('password.nuevo');
+});
+Route::put('/password/nueva/{token}', 'UserController@nueva_contrasenia')->name('new.password');
 

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
- 
+
 <form action="{{ route('conductor.store') }}" method="post" enctype="multipart/form-data"   >
     @csrf
     <div class="registrar text-center">
