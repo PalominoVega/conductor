@@ -18,7 +18,7 @@ class CreateConfiguracionsTable extends Migration
             $table->string('a',20)->nullable();
             $table->string('u',20)->nullable();
             $table->string('p',20)->nullable();
-            $table->string('g',50)->nullable();
+            $table->string('g',50)->default('all');
             $table->unsignedInteger('empresa_id');            
         });
 

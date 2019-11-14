@@ -15,11 +15,12 @@ class CreateRecorridosTable extends Migration
     {
         Schema::create('recorrido', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('recorrido')->default('0');
+            $table->double('recorrido','10,3')->default('0');
             $table->double('recorrido_aux')->default('0');
             $table->enum('estado',["0","1"])->default('0'); // 0: sin cambio , 1: acepto que cambio aceite
             $table->enum('bandera',["0","1"])->default('0'); //0 no enviado notificacion push  1: enviado
             $table->unsignedInteger('vehiculo_id'); 
+            $table->unsignedInteger('empresa_id'); 
         });
     }
 

@@ -21,6 +21,7 @@ class CreateConductorsTable extends Migration
             $table->string('apellido','50');
             $table->string("tipo_sangre",4);
             $table->string('celular','22')->nullable();
+            $table->string('email',100)->nullable();
             $table->string('direccion','100')->nullable();
             $table->string('categoria_licencia','10')->nullable();
             $table->date('fecha_licencia')->nullable();

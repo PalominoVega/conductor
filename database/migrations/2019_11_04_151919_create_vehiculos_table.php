@@ -32,7 +32,7 @@ class CreateVehiculosTable extends Migration
             
             
             $table->enum('estado',['0','1'])->default('0');
-            $table->double('kilometraje')->nullable();
+            $table->double('kilometraje')->default('0');
             $table->double('odometro')->nullable();
 
             $table->unsignedInteger('empresa_id');

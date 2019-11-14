@@ -45,7 +45,7 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">año</label>
-                            <input type="text" name="año" id="año" class="form-control form-control-sm" value="{{old('año')}}">
+                            <input type="text" name="anio" id="anio" class="form-control form-control-sm" value="{{old('anio')}}">
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
                             <label for="">soat</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control form-control-sm" value="{{old('direccion')}}">
+                            <input type="text" name="soat" id="soat" class="form-control form-control-sm" value="{{old('soat')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">

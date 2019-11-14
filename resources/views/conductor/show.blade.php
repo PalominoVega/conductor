@@ -25,7 +25,7 @@
                         @endif
                         <p>
                         <i class="icon-user" aria-hidden="true"></i> {{$conductor->nombre.' '.$conductor->apellidos}}<br>
-                            <i class="icon-telefono" aria-hidden="true"></i>{{$conductor->dni}} <br>
+                            <i class="icon-id-card" aria-hidden="true"></i>{{$conductor->dni}} <br>
                             <i class="icon-telefono" aria-hidden="true"></i>{{$conductor->celular}}
                         </p>
                     </div>

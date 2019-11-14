@@ -969,3 +969,13 @@ footer div small{
     border: opx !important;
     font-size: 11px !important;
 }
+
+@media (max-width: 770px){ 
+    .cumpleanios .card-header .card-title{
+        position: relative;
+    }
+    .cumpleanios .card-header button{
+        margin-top: 0px;
+        margin-left: 30px;
+    }
+}

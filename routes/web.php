@@ -33,6 +33,13 @@ Route::get('/login', function () {
 })->name('login');
 Route::get('cerrar/', 'LoginController@cerrar_session')->name('cerrar');
 
+/**
+ * cambio de aceite
+ */
+Route::get('cambio_aceite', 'RecorridoController@index')->name('cambioaceite')->middleware('auth');
+Route::put('cambio_aceite/{recorrido_id}', 'RecorridoController@update')->name('cambioaceite.update')->middleware('auth');
+Route::post('cambio_aceite/{vehiculo_id}', 'RecorridoController@store')->name('cambioaceite.store')->middleware('auth');
+Route::get('recorrido', 'RecorridoController@recorrido')->name('vehiculo.recorrido')->middleware('auth');
 
 /**
  * Asignador de Vehiculo
@@ -77,3 +84,9 @@ Route::get('/password/nueva/{token}', function () {
 });
 Route::put('/password/nueva/{token}', 'UserController@nueva_contrasenia')->name('new.password');
 
+/**
+ * empresa
+ */
+Route::resource('empresa','EmpresaController')->only([
+    'create', 'store'
+]);

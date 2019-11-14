@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Vehiculo;
+use App\Model\Configuracion;
 use Illuminate\Http\Request;
+use App\Logica\Curl;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\VehiculoValidation;
@@ -44,7 +46,7 @@ class VehiculoController extends Controller
     {
         DB::beginTransaction();
         try {
-
+        $mensaje='';
             /**
              * datos del vehiculo
              */
@@ -68,21 +70,26 @@ class VehiculoController extends Controller
             $vehiculo->save();
 
             // poner el odometro
-            $configuracion=Configuraciones::where('empresa_id', $vehiculo->empresa_id)->first();
+            $configuracion=Configuracion::where('empresa_id', $vehiculo->empresa_id)->first();
 
             $url = 'http://gps.corporacionvespro.com:8080/eventsperu/data.jsonx?a='.$configuracion->a.'&p='.$configuracion->p.'&u='.$configuracion->u.'&d='.$vehiculo->placa.'&l=1';
             $data=Curl::get($url);
-            
-            if(count($data['DeviceList'][0]->EventData)>0){
-                $firstEvento=$data['DeviceList'][0]->EventData[0];
-                // $placa=$firstEvento['Device'];
-                $odometro=$firstEvento['Odometer'];
-                $vehiculo->odometro=$odometro;
-                $vehiculo->save();
+
+            if($data!=null && count($data)>=2){
+                if(count($data['DeviceList'][0]['EventData'])>0){
+                    $firstEvento=$data['DeviceList'][0]['EventData'][0];
+                    // $placa=$firstEvento['Device'];
+                    $odometro=$firstEvento['Odometer'];
+                    $vehiculo->odometro=$odometro;
+                    $vehiculo->save();
+                    
+                }
+            }else{
+                $mensaje='Datos registrado correctamente sin datos del GPS';            
             }
 
             DB::commit();
-            alert()->success($vehiculo->placa,'Datos registrado correctamente');
+            alert()->success($vehiculo->placa,$mensaje);
             return redirect()->route('vehiculo.index');
         }catch(\Exception $e){
 
@@ -139,7 +146,6 @@ class VehiculoController extends Controller
             $vehiculo->modelo=mb_strtoupper($request->get('modelo'));
             $vehiculo->color=mb_strtoupper($request->get('color'));
             $vehiculo->anio=$request->get('anio');
-            $vehiculo->recorrido=$request->get('recorrido'); 
 
             /**
              * Documentacion y fecha de vigencia de los mismos

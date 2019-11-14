@@ -6,6 +6,7 @@ use App\Model\Empresa;
 use Illuminate\Http\Request;
 
 use App\Model\User;
+use App\Model\Configuracion;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaValidation;
@@ -30,7 +31,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('empresa.create');
     }
 
     /**
@@ -72,24 +73,32 @@ class EmpresaController extends Controller
             $user->dni=$request->dni;
             $user->numero=$request->numero;
             $user->password=bcrypt($request->contrasenia);
-            $user->api_token=$id.'_'.Carbon::now()->format('YmdHisu');
+            $user->direccion=$request->direccion;
+            $user->api_token=$id_empresa.'_'.Carbon::now()->format('YmdHisu');
             $user->estado='2';
             $user->empresa_id=$id_empresa;
             $user->save();
-            
-            DB::commit();
 
-            return response()->json([
-                "status"    =>  "OK",
-                "data"      =>  ($request->data==true) ? $empresa : "Empresa registrado",
-            ]);
-        } catch (\Exception $e) {
+            /**
+             * cuenta
+             */
+            $cuenta=new Configuracion();
+            $cuenta->a=$request->cuenta;
+            $cuenta->u=$request->usuario;
+            $cuenta->p=$request->contraseniacuenta;
+            $cuenta->g=$request->grupo;
+            $cuenta->empresa_id=$id_empresa;
+            $cuenta->save();
+            DB::commit();
+            alert()->success($empresa->nombre,'Datos registrados correctamente');
+            return redirect()->back();
+        }catch(\Exception $e){
+
             DB::rollback();
-            return response()->json([
-                "status"    =>  "DANGER",
-                "data"      =>  $e->getMessage()
-            ]);
-        }
+            $error = $e->getMessage();
+            alert()->warning('No se ha podido registrar los datos <br>'.$error, $empresa->nombre )->persistent('Ok')->html();
+            return redirect()->back();
+        };
     }
 
     /**

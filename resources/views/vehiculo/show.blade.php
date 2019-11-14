@@ -13,8 +13,8 @@
                 <div class="card-body">
                     <div class="card-body-data">
                         <p>
-                            <i class="fa fa-user" aria-hidden="true"></i>{{$vehiculo->unidad}} <br>
-                            <i class="fa fa-id-card" aria-hidden="true"></i>{{$vehiculo->placa}} <br>
+                            <i class="icon-vehiculo" aria-hidden="true"></i>{{$vehiculo->unidad}} <br>
+                            <i class="icon-id-card" aria-hidden="true"></i>{{$vehiculo->placa}} <br>
                         </p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="">soat</label>
-                                    <input type="text" name="soat" id="soat" class="form-control form-control-sm" value="{{ old('soat', $vehiculo->soat)}}" readonly>
+                                    <input type="text" name="soat" id="soat" class="form-control form-control-sm" value="{{ old('soat', $vehiculo->empresa_soat)}}" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">

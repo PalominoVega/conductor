@@ -30,7 +30,7 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <a class="sidebar-close" onclick=cerrar()>
-                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <i class="icon-borrar text-primary" aria-hidden="true"></i>
                 </a>
                 <h3 class="text-center my-3">SISTEMAS</h3>
             </div>
@@ -43,10 +43,16 @@
                         <a href="{{ route('vehiculo.index') }}"><i class="icon-vehiculo" aria-hidden="true"></i>Lista de Vehículos</a>
                     </li> 
                     <li>
-                        <a href="{{ route('asignador.index') }}"><i class="icon-asignacion" aria-hidden="true"></i>Asignación</a>
+                        <a href="{{ route('asignador.index') }}"><i class="icon-car" aria-hidden="true"></i>Asignación</a>
                     </li> 
                     <li>
                         <a href="{{ route('alert.doc') }}"><i class="icon-notificaciones" aria-hidden="true"></i>Notificaciones</a>
+                    </li> 
+                    <li>
+                        <a href="{{ route('cambioaceite') }}"><i class="icon-gas" aria-hidden="true"></i>Cambio de Aceite</a>
+                    </li> 
+                    <li>
+                        <a href="{{ route('vehiculo.recorrido') }}"><i class="icon-map" aria-hidden="true"></i>Kilometraje</a>
                     </li> 
                     {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
@@ -62,7 +68,7 @@
                     <ul>
                         <li class="dropdown">
                             <a href="{{ route('conductor.cumpleanios') }}" class="cumpleanio">
-                                <i class="icon-birthday-cake"></i>
+                                <i class="icon-cumplenio2"></i>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -78,7 +84,7 @@
                     </ul>
                 </div>
                 <button class="navbar-open" onclick=abrir()>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    <i class="icon-bars" aria-hidden="true"></i>
                 </button>
             </div>
              {{-- <div class="img-panel-superior">

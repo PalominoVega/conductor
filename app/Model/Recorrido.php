@@ -9,4 +9,8 @@ class Recorrido extends Model
     protected $table="recorrido";
     public $timestamps = false;
     
+    public function vehiculo()
+    {
+        return $this->belongsTo('App\Model\Vehiculo');
+    }
 }

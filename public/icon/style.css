@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'vespro';
-  src:  url('fonts/vespro.eot?4biu24');
-  src:  url('fonts/vespro.eot?4biu24#iefix') format('embedded-opentype'),
-    url('fonts/vespro.ttf?4biu24') format('truetype'),
-    url('fonts/vespro.woff?4biu24') format('woff'),
-    url('fonts/vespro.svg?4biu24#vespro') format('svg');
+  src:  url('fonts/vespro.eot?3j5esh');
+  src:  url('fonts/vespro.eot?3j5esh#iefix') format('embedded-opentype'),
+    url('fonts/vespro.ttf?3j5esh') format('truetype'),
+    url('fonts/vespro.woff?3j5esh') format('woff'),
+    url('fonts/vespro.svg?3j5esh#vespro') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,8 +25,14 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-user-group:before {
-  content: "\e90b";
+.icon-abajo-fecha:before {
+  content: "\e90c";
+}
+.icon-check-circle-line:before {
+  content: "\e90e";
+}
+.icon-gas:before {
+  content: "\e910";
 }
 .icon-add:before {
   content: "\f067";
@@ -43,8 +49,14 @@ i {
 .icon-add-circle:before {
   content: "\f055";
 }
+.icon-minus-circle:before {
+  content: "\f056";
+}
 .icon-borrar-circle:before {
   content: "\f057";
+}
+.icon-check-circle:before {
+  content: "\f058";
 }
 .icon-ban:before {
   content: "\f05e";
@@ -52,11 +64,11 @@ i {
 .icon-calendario2:before {
   content: "\f073";
 }
-.icon-group:before {
-  content: "\f0c0";
-}
 .icon-users:before {
   content: "\f0c0";
+}
+.icon-bars:before {
+  content: "\f0c9";
 }
 .icon-abajo:before {
   content: "\f0d7";
@@ -64,11 +76,11 @@ i {
 .icon-arriba:before {
   content: "\f0d8";
 }
+.icon-kilometraje:before {
+  content: "\f0e4";
+}
 .icon-subir-file:before {
   content: "\f0ee";
-}
-.icon-automobile:before {
-  content: "\f1b9";
 }
 .icon-car:before {
   content: "\f1b9";
@@ -85,10 +97,13 @@ i {
 .icon-at:before {
   content: "\f1fa";
 }
-.icon-birthday-cake:before {
+.icon-cumplenio2:before {
   content: "\f1fd";
 }
-.icon-id-badge:before {
+.icon-map:before {
+  content: "\f279";
+}
+.icon-foto-check:before {
   content: "\f2c1";
 }
 .icon-drivers-license:before {
@@ -96,6 +111,12 @@ i {
 }
 .icon-id-card:before {
   content: "\f2c2";
+}
+.icon-drivers-license-o:before {
+  content: "\f2c3";
+}
+.icon-id-card-o:before {
+  content: "\f2c3";
 }
 .icon-asignacion:before {
   content: "\e900";
