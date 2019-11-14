@@ -13,7 +13,7 @@ class CreateConfiguracionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configuracions', function (Blueprint $table) {
+        Schema::create('configuracion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('a',20)->nullable();
             $table->string('u',20)->nullable();
@@ -23,9 +23,9 @@ class CreateConfiguracionsTable extends Migration
         });
 
         DB::table('configuracion')->insert([
-            'a'=>'vespro',
+            'a'=>'vespro2',
             'p'=>'123456',
-            'u'=>'pruebavespro',
+            'u'=>'prueba',
             'g'=>'all',
             'empresa_id'=>1,
         ]);
@@ -38,6 +38,6 @@ class CreateConfiguracionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configuracions');
+        Schema::dropIfExists('configuracion');
     }
 }

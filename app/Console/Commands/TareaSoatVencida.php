@@ -40,7 +40,7 @@ class TareaSoatVencida extends Command
     public function handle()
     {
         $app_url=env('APP_URL');
-        $prevent=Carbon::now()->addDays(45)->format('Y-m-d');
+        $prevent=Carbon::now()->addDays(7)->format('Y-m-d');
         $vencidos=Vehiculo::with('empresa')->where('fecha_soat',$prevent)
                 ->get();
             foreach ($vencidos as $key => $vencido) {

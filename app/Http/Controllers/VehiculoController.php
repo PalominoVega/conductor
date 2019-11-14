@@ -44,6 +44,7 @@ class VehiculoController extends Controller
     {
         DB::beginTransaction();
         try {
+
             /**
              * datos del vehiculo
              */
@@ -65,6 +66,21 @@ class VehiculoController extends Controller
 
             $vehiculo->empresa_id=auth()->user()->empresa_id;
             $vehiculo->save();
+
+            // poner el odometro
+            $configuracion=Configuraciones::where('empresa_id', $vehiculo->empresa_id)->first();
+
+            $url = 'http://gps.corporacionvespro.com:8080/eventsperu/data.jsonx?a='.$configuracion->a.'&p='.$configuracion->p.'&u='.$configuracion->u.'&d='.$vehiculo->placa.'&l=1';
+            $data=Curl::get($url);
+            
+            if(count($data['DeviceList'][0]->EventData)>0){
+                $firstEvento=$data['DeviceList'][0]->EventData[0];
+                // $placa=$firstEvento['Device'];
+                $odometro=$firstEvento['Odometer'];
+                $vehiculo->odometro=$odometro;
+                $vehiculo->save();
+            }
+
             DB::commit();
             alert()->success($vehiculo->placa,'Datos registrado correctamente');
             return redirect()->route('vehiculo.index');
@@ -123,6 +139,7 @@ class VehiculoController extends Controller
             $vehiculo->modelo=mb_strtoupper($request->get('modelo'));
             $vehiculo->color=mb_strtoupper($request->get('color'));
             $vehiculo->anio=$request->get('anio');
+            $vehiculo->recorrido=$request->get('recorrido'); 
 
             /**
              * Documentacion y fecha de vigencia de los mismos

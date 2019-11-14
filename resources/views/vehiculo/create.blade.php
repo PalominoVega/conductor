@@ -75,6 +75,12 @@
                             <input type="date" name="fecha_revision_tecnica" id="fecha_revision_tecnica" class="form-control form-control-sm" value="{{old('fecha_revision_tecnica')}}">
                         </div>
                     </div>
+                    {{-- <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class="form-group">
+                            <label for="">Recorrido</label>
+                            <input type="number" name="recorrido" id="recorrido" class="form-control form-control-sm" value="{{old('recorrido')}}">
+                        </div>
+                    </div> --}}
                     
                 </div>    
             </div>

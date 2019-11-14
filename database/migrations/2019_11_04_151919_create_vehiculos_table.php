@@ -31,8 +31,9 @@ class CreateVehiculosTable extends Migration
             $table->date('fecha_revision_tecnica')->nullable(); 
             
             
-            $table->enum('estado',['0','1']);
-            $table->double('velocidad','6,2');
+            $table->enum('estado',['0','1'])->default('0');
+            $table->double('kilometraje')->nullable();
+            $table->double('odometro')->nullable();
 
             $table->unsignedInteger('empresa_id');
         });
