@@ -13,7 +13,12 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\TareaClienteCumpleanio',
+        'App\Console\Commands\TareaCambioAceite',
+        'App\Console\Commands\TareaLicenciaVencida',
+        'App\Console\Commands\TareaRevisionTecnicaVencida',
+        'App\Console\Commands\TareaSoatVencida',
+        'App\Console\Commands\TareaNotificacionCambioAceite',
     ];
 
     /**
@@ -24,8 +29,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('tarea:clientecumpleanios')->dailyAt('9:01');
+        $schedule->command('tarea:soatvencido')->dailyAt('9:01');
+        $schedule->command('tarea:reviciontecnicavencida')->dailyAt('9:01');
+        $schedule->command('tarea:licenciavencido')->dailyAt('9:01');
+        $schedule->command('tarea:cambioaciete')->everyMinute();
+        $schedule->command('tarea:cambioaceitex2')->cron('0 */72 * * *');
     }
 
     /**

@@ -3,17 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Carbon\Carbon;
-use App\Model\Conductor;
 
-class TareaClienteCumpleanio extends Command
+class TareaNotificacionCambioAceite extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'tarea:clientecumpleanios';
+    protected $signature = 'tarea:cambioaceitex2';
 
     /**
      * The console command description.
@@ -40,17 +38,18 @@ class TareaClienteCumpleanio extends Command
     public function handle()
     {
         $app_url=env('APP_URL');
-        $prevent=Carbon::now()->format('Y-m-d');
-        $cumpleanios=Conductor::with('empresa')->where('fecha_nacimiento',$prevent)
+
+        $reporte=Recorrido::with('vehiculo')->where('bandera','1')->where('estado','0')
                 ->get();
-        foreach ($cumpleanios as $key => $cumpleanio) {
+            foreach ($reporte as $key => $vencido) {
+
             $apiKey="AIzaSyCRRFu54sUpJaRpnWiR13Z5Zce_AzCPPhg";
-            $fields=array('to'=>'/topics/flota-'.$cumpleanio->empresa_id,
+            $fields=array('to'=>'/topics/flota-'.$vencido->empresa_id,
             'notification'=>array(
-                'title'=>"Gestion de flota",
-                'body'=>(" Hoy es su cumpleaños de ").$cumpleanio->nombre.' '.$cumpleanio->apellido,
-                'icon'=>$app_url.'storage/'.$cumpleanio->empresa->logo,
-                'click_action'=>$app_url."conductor/cumpleanios"
+                'title'=>"Gestion de Flota",
+                'body'=>("Cambio de aceita de la placa: ").$vencido->vehiculo->placa,
+                'icon'=>$app_url.'storage/'.$vencido->vehiculo->empresa->logo,
+                'click_action'=>$app_url."notificacion"
             ));
             $url='https://fcm.googleapis.com/fcm/send';
             $headers=array('Authorization: key='.$apiKey,'Content-Type: application/json');
@@ -63,6 +62,6 @@ class TareaClienteCumpleanio extends Command
             curl_setopt($curl,CURLOPT_POSTFIELDS,json_encode($fields));
             echo curl_exec($curl);
             curl_close($curl);
-        }
+        } 
     }
 }

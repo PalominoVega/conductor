@@ -13,7 +13,7 @@ class TareaLicenciaVencida extends Command
      *
      * @var string
      */
-    protected $signature = 'tarea:soatvencido';
+    protected $signature = 'tarea:licenciavencido';
 
     /**
      * The console command description.
