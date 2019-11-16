@@ -28,6 +28,7 @@ class RecorridoController extends Controller
 
             $vehiculo=Vehiculo::where('id',$vehiculo_id)
                         ->where('estado','0')
+                        ->where('empresa_id', auth()->user()->empresa_id)
                         ->first();
             $vehiculo->kilometraje=$request->recorrido;
             $vehiculo->save();
@@ -54,11 +55,11 @@ class RecorridoController extends Controller
                         Alert::success('Operecion','Datos Guardados ')->autoclose(4000);
                         return redirect()->route('vehiculo.recorrido');
                     }
+                }else{
+                    DB::rollback();
+                    Alert::warning('Operecion','Fallo conexion con la plataforma GPS o vehiculo no tiene GPS')->autoclose(4000);
+                    return back();
                 }    
-                DB::rollback();
-                Alert::warning('Operecion','Fallo conexion con la plataforma GPS o vehiculo no tiene GPS')->autoclose(4000);
-                return brack();
-
             }
         }catch(\Exception $e){
             DB::rollback();
@@ -118,6 +119,15 @@ class RecorridoController extends Controller
     public function recorrido()
     {
         $vehiculos=Vehiculo::where('empresa_id',auth()->user()->empresa_id)->where('estado','0')->get();
+        foreach ($vehiculos as $key => $vehiculo) {
+            $recorrido=Recorrido::where('vehiculo_id',$vehiculo->id)->where('estado','0')->first();
+            if($recorrido!=null){
+                $vehiculo->km=$recorrido->recorrido;
+            }else{
+                $vehiculo->km=0.00;
+            }
+        }
+
         return view('vehiculo.recorrido', compact('vehiculos'));
     }
 }

@@ -44,7 +44,7 @@
        
        $('body').on('click', '.estado', function(event) {
             let placa =$(this).attr('data-placa');
-            let title='¿Está seguro de realizar el cambio de aceite de la placa: '+placa;
+            let title='¿Se realizó el cambio de aceite al vehiculo de placa: '+placa;
             let cambio_aceite=this.id;
             let fila=$(this).parents('tr');
             let fila2=$(this).parents('tr.child').prev();
@@ -52,7 +52,7 @@
            
             swal({
                 title: title,
-                icon: "warning",
+                // icon: "success",
                 buttons: true,
                 dangerMode: true,
                 })

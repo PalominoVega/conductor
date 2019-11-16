@@ -19,14 +19,14 @@
                     @foreach ($vehiculos as $vehiculo)
                         <tr>
                             <td>{{$vehiculo->placa}}</td>
-                            <td>{{$vehiculo->odometro}}</td>
+                            <td>{{$vehiculo->km}}</td>
                             @if ($vehiculo->kilometraje!='0')
                                 <td>{{$vehiculo->kilometraje}}</td>
                             @else
                                 <td >
                                     <form action="{{ route('cambioaceite.store',$vehiculo->id) }}" method="post" >
                                                 @csrf
-                                        <input type="text" name="recorrido" id="recorrido" class=" form-control-sm" value="{{old('recorrido')}}">
+                                        <input type="text" name="recorrido"  class=" form-control-sm" value="{{old('recorrido')}}" required>
                                         <button type="submit" class="btn-primary btn-sm"><i class="icon-check"></i></button>
                                     </form>
                                 </td>

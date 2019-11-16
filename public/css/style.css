@@ -390,6 +390,9 @@ body{background: #f2f2f2}
 .navbar-content{
     margin-left: auto;
 }
+.navbar-content-oculta{
+    display: none;
+}
 @media (max-width: 992px){ 
     .navbar{
         left: auto;
@@ -405,6 +408,9 @@ body{background: #f2f2f2}
     .navbar-open i{ 
         display: flex;
         align-items: center;
+    }
+    .navbar-content-oculta{
+        display: block;
     }
 }
 
@@ -978,4 +984,35 @@ footer div small{
         margin-top: 0px;
         margin-left: 30px;
     }
+}
+
+.dropdown-toggle::after {
+    right: 0;
+    position: absolute;
+    margin-right: 20px;
+}
+
+.sidebar ul li a ul{
+    padding: 15px 30px;
+}
+
+.navbar-content-oculta .dropdown{
+    cursor: pointer;
+}
+
+.navbar-content-oculta .dropdown-menu {
+    position: relative !important;
+    transform:none !important;
+    border: none;
+    float: none;
+    cursor: pointer;
+  }
+
+  .navbar-content-oculta .dropdown-item:focus, .dropdown-item:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.navbar-content-oculta .dropdown-item {
+    padding: 1rem 1.5rem 0rem !important;
 }

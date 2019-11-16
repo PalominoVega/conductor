@@ -35,6 +35,28 @@
                 <h3 class="text-center my-3">SISTEMAS</h3>
             </div>
             <div class="sidebar-body">
+                <div class="navbar-content-oculta">
+                  
+                    <ul>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class=" icon-user"></i>
+                          {{auth()->user()->nombre}} {{auth()->user()->apellido}}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a onclick="salir()">Cerrar Sesión</a></li>
+                          <li class="dropdown-item"><a href="{{ route('cambiar_contrasenia') }}" >Cambiar contraseña</a></li>
+                        </ul>
+                      </li>
+                      <li class="">
+                        <a href="{{ route('conductor.cumpleanios') }}" class="cumpleanio">
+                          <i class="icon-cumplenio2"></i> Cumpleaños
+                        </a>
+                      </li>
+                    </ul>
+                    <hr>
+                </div>
+
                 <ul>
                     <li >
                         <a href="{{ route('conductor.index') }}"><i class="icon-user" aria-hidden="true"></i>Lista de Conductores</a>
@@ -48,16 +70,21 @@
                     <li>
                         <a href="{{ route('alert.doc') }}"><i class="icon-notificaciones" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
+
+                    
+                      
                     <li>
                         <a href="{{ route('cambioaceite') }}"><i class="icon-gas" aria-hidden="true"></i>Cambio de Aceite</a>
                     </li> 
-                    <li>
-                        <a href="{{ route('vehiculo.recorrido') }}"><i class="icon-map" aria-hidden="true"></i>Kilometraje</a>
-                    </li> 
+                    
+                    
                     {{-- <li>
                         <a href=""><i class="fa fa-calendar-o" aria-hidden="true"></i>Agenda</a>
                     </li>  --}}
-                </ul>
+                    
+
+                  </ul>
+                
             </div>
         </div>
         <div class="show-sidebar" onclick=cerrar()></div>
@@ -73,7 +100,7 @@
                         </li>
                         <li class="dropdown">
                             <a  href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="user">
-                                palomino vega 
+                                {{auth()->user()->nombre}} {{auth()->user()->apellido}}
                                 <i class=" icon-user ml-2"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
