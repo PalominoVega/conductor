@@ -133,9 +133,9 @@
         );
         
 
-        $("#documento").keyup(function(){
+        $("#dni").keyup(function(){
 
-            var documento=$('#documento').val();
+            var documento=$('#dni').val();
 
             if(documento.length==8 || documento.length==11){
                 $.ajax({
