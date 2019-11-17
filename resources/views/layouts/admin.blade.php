@@ -71,7 +71,9 @@
                         <a href="{{ route('alert.doc') }}"><i class="icon-notificaciones" aria-hidden="true"></i>Notificaciones</a>
                     </li> 
 
-                    
+                    <li>
+                        <a href="{{ route('vehiculo.recorrido') }}"><i class="icon-map" aria-hidden="true"></i>Kilometraje</a>
+                    </li> 
                       
                     <li>
                         <a href="{{ route('cambioaceite') }}"><i class="icon-gas" aria-hidden="true"></i>Cambio de Aceite</a>
