@@ -80,7 +80,7 @@
 
     <div class="card-table mt-5  ">
         <div class="card-header">
-            <div class="card-title">Lista LICENCIA</div>
+            <div class="card-title">LICENCIA DE CONDUCIR</div>
         </div>
         <div class="table-responsive-general">
             <table id="hola" class="table table-card dt-responsive nowrap">

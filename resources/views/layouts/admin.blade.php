@@ -36,7 +36,6 @@
             </div>
             <div class="sidebar-body">
                 <div class="navbar-content-oculta">
-                  
                     <ul>
                       <li class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,7 +56,7 @@
                     <hr>
                 </div>
 
-                <ul>
+                <ul class="menu">
                     <li >
                         <a href="{{ route('conductor.index') }}"><i class="icon-user" aria-hidden="true"></i>Lista de Conductores</a>
                     </li> 
@@ -159,7 +158,7 @@
     var URLactual = window.location.href.replace("http://","").replace("https://","");
 
     $(document).ready(function(){
-        $(".sidebar .sidebar-body ul li ").each(function(){
+        $(".sidebar .sidebar-body ul.menu li ").each(function(){
           var a=$(this).children('a').attr('href').replace("http://","").replace("https://","");
           
           if(URLactual.indexOf(a)==0){
@@ -270,10 +269,6 @@
               }
           });
         }
-
-
-
-      
     }
 
     setTimeout(() => {

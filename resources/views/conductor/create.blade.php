@@ -23,7 +23,7 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">DNI</label>
-                        <input type="text" name="dni" id="dni" class="form-control form-control-sm" value="{{old('dni')}}"  >
+                        <input type="text" name="dni" id="documento" class="form-control form-control-sm" value="{{old('dni')}}"  >
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -35,13 +35,13 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">NOMBRES</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" value="{{old('nombre')}}" >
+                        <input type="text" name="nombre" id="nombre" class="form-control form-control-sm" value="{{old('nombre')}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
                         <label for="">APELLIDOS</label>
-                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" value="{{old('apellido')}}" >
+                        <input type="text" name="apellido" id="apellido" class="form-control form-control-sm" value="{{old('apellido')}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -133,13 +133,13 @@
         );
         
 
-        $("#dni").keyup(function(){
+        $("#documento").keyup(function(){
 
-            var documento=$('#dni').val();
+            var documento=$('#documento').val();
 
             if(documento.length==8 || documento.length==11){
                 $.ajax({
-                    url:"", 
+                    url:"{{route('conductor.buscar')}}", 
                     method:"get",
                     data:{
                         documento:documento, 
@@ -150,9 +150,11 @@
                          
                         if(resultado.length!=undefined){
                             $('#nombre').removeAttr('readonly');
+                            $('#apellido').removeAttr('readonly');
                         }else{
                             if(documento.length==8){
-                                $('#nombre').val(resultado.nombres+' '+resultado.apellidoPaterno+' '+resultado.apellidoMaterno);
+                                $('#nombre').val(resultado.nombres);
+                                $('#apellido').val(resultado.apellidoPaterno+' '+resultado.apellidoMaterno);
                             }else{
                                 $('#nombre').val(resultado.razonSocial);
                             }
@@ -161,6 +163,7 @@
                 })
             }else{
                 $('#nombre').val('').attr('readonly','readonly');
+                $('#apellido').val('').attr('readonly','readonly');
             }
         })
         
