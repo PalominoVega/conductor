@@ -91,3 +91,5 @@ Route::put('/password/nueva/{token}', 'UserController@nueva_contrasenia')->name(
 Route::resource('empresa','EmpresaController')->only([
     'create', 'store'
 ]);
+
+Route::get('/dni', 'ConsultaController@buscar');
